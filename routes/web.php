@@ -15,20 +15,19 @@ Route::get('/', function () {
     return view('welcome');
 })->name('dashboard');
 
-Route::resource('folders', 'FolderController');
-
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group([
+    'middleware'=> 'auth'
+], function(){
+    Route::resource('folders', 'FolderController');
+});
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+
+
