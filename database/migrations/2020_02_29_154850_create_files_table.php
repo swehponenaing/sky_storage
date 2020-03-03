@@ -15,13 +15,14 @@ public function up()
     {
         Schema::create('files', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('path');
+            $table->string('uuid')->nullable();
             $table->string('name');
-            $table->string('mime_type');
-            $table->integer('size');
             $table->unsignedBigInteger('folder_id');
             $table->unsignedBigInteger('created_by_id');
             $table->timestamps();
+            $table->softDeletes();
+            
+            $table->index(['deleted_at']);
 
             $table->foreign('folder_id')
                   ->references('id')->on('folders')

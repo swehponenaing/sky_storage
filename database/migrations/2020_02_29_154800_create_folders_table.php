@@ -18,6 +18,8 @@ class CreateFoldersTable extends Migration
             $table->string('name');
             $table->unsignedBigInteger('created_by_id');
             $table->timestamps();
+            $table->softDeletes();
+            $table->index(['deleted_at']);
         });
     }
 
