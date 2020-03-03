@@ -24,6 +24,9 @@ Route::group([
 ], function(){
     Route::resource('folders', 'FolderController');
     Route::resource('files', 'FileController');
+
+
+    Route::post('/spatie/media/upload', 'SpatieMediaController@create')->name('media.upload');
 });
 
 

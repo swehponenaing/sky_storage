@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
 
+
 class File extends Model implements HasMedia
 {
-    use SoftDeletes;
+    use SoftDeletes, HasMediaTrait;
     protected $fillable = ['uuid','name', 'created_by_id'];
 
     public function setFolderIdAttribute($input)
@@ -19,13 +20,15 @@ class File extends Model implements HasMedia
 
     public function folder()
     {
-        return $this->belongsTo(Folder::class, 'folder_id')->withTrashed();
+        return $this->belongsTo(Folder::class, 'folder_id');
     }
 
     public function setCreatedByIdAttribute($input)
     {
         $this->attributes['created_by_id'] = $input ? $input : null;
     }
+
+    
 
     public function created_by()
     {

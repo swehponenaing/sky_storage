@@ -4,7 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Faker\Provider\Uuid;
+use App\Http\Requests\StoreFilesRequest;
+use App\Http\Controllers\Traits\FileUploadTrait;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
 use App\Folder;
+use App\File;
 
 class FileController extends Controller
 {
