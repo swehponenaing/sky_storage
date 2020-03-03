@@ -8,12 +8,14 @@
             <div class="card-header py-3">
                 <div class="row">
                     <div class="col-10">
-                        <h4 class="card-title m-0 font-weight-bold text-primary">Create</h4>
+                        <h4 class="card-title m-0 font-weight-bold text-primary">Create Folder</h4>
                     </div>
                 </div>
             </div>
             <div class="card-body">
                 <form action="{{route('folders.store')}}" method="POST">
+                @csrf
+                <input type="hidden" name="created_by_id" value="{{$created_by->id}}">
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="name">Name:</label>
                         <div class="col-sm-10">

@@ -293,7 +293,7 @@
                             <i class="fas fa-folder"></i>
                             <span class="hide-menu">Folders</span></a>
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="#" aria-expanded="false">
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ route('files.index') }}" aria-expanded="false">
                             <i class="fas fa-file"></i>
                             <span class="hide-menu">Files</span></a>
                         </li>

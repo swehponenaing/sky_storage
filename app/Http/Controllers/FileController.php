@@ -3,14 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\File;
-use App\Folder;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Input;
-use App\Http\Requests\StoreFoldersRequest;
+use App\Folder;
 
-class FolderController extends Controller
+class FileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +15,7 @@ class FolderController extends Controller
      */
     public function index()
     {
-        return view('frontend.folders.index');
+        return view('frontend.files.index');
     }
 
     /**
@@ -29,8 +25,11 @@ class FolderController extends Controller
      */
     public function create()
     {
-        $created_by = Auth::user();
-        return view('frontend.folders.create', compact('created_by'));
+        $created_by=Auth::user()->id;
+        
+        $folders = Folder::where('created_by_id',$created_by)->get();
+        // dd($folder);
+        return view('frontend.files.create', compact('created_by','folders'));
     }
 
     /**
@@ -39,12 +38,9 @@ class FolderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreFoldersRequest $request)
+    public function store(Request $request)
     {
-
-        $folder = Folder::create($request->all());
-
-        return redirect()->route('folders.index');
+        //
     }
 
     /**
