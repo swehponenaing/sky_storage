@@ -19,7 +19,8 @@ class FolderController extends Controller
      */
     public function index()
     {
-        return view('frontend.folders.index');
+        $folders= Folder::all();
+        return view('frontend.folders.index', compact('folders'));
     }
 
     /**
@@ -30,7 +31,8 @@ class FolderController extends Controller
     public function create()
     {
         $created_by = Auth::user();
-        return view('frontend.folders.create', compact('created_by'));
+        $folderes=Folder::all();
+        return view('frontend.folders.create', compact('created_by', 'folders'));
     }
 
     /**

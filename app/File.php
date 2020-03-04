@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
+
 
 
 class File extends Model implements HasMedia
@@ -18,20 +19,17 @@ class File extends Model implements HasMedia
         $this->attributes['folder_id'] = $input ? $input : null;
     }
 
-    public function folder()
+
+
+    public function folder($value='')
     {
-        return $this->belongsTo(Folder::class, 'folder_id');
+        return $this->belongsTo('App\Folder');
     }
 
-    public function setCreatedByIdAttribute($input)
-    {
-        $this->attributes['created_by_id'] = $input ? $input : null;
-    }
 
     
-
-    public function created_by()
+    public function user($value='')
     {
-        return $this->belongsTo(User::class, 'created_by_id');
+        return $this->belongsTo('App\User', 'created_by_id');
     }
 }

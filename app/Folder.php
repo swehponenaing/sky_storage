@@ -15,9 +15,10 @@ class Folder extends Model
     {
         $this->attributes['created_by_id'] = $input ? $input : null;
     }
-    
-    public function created_by()
+
+
+    public function user($value='')
     {
-        return $this->belongsTo(User::class, 'created_by_id');
+        return $this->belongsTo('App\User', 'created_by_id');
     }
 }

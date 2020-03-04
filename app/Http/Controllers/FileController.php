@@ -31,11 +31,23 @@ class FileController extends Controller
      */
     public function create()
     {
-        $created_by=Auth::user()->id;
+       
         
-        $folders = Folder::where('created_by_id',$created_by)->get();
-        // dd($folder);
-        return view('frontend.files.create', compact('created_by','folders'));
+        // $folders = Folder::where('created_by_id',$created_by)->get();
+        // // dd($folder);
+        // return view('frontend.files.create', compact('created_by','folders'));
+
+
+        $roleId = Auth::getUser()->role_id;
+        $userFilesCount = File::where('created_by_id', Auth::getUser()->id)->count();
+        if ($roleId == 2 && $userFilesCount > 5) {
+            return redirect('/admin/files');
+        }
+
+        $folders=Folder::all();
+        $created_by=Auth::user()->id;
+
+        return view('frontend..files.create', compact('folders', 'created_by', 'userFilesCount', 'roleId'));
     }
 
     /**
@@ -46,7 +58,9 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $folder = Folder::create($request->all());
+
+        return redirect()->route('frontend.folders.index');
     }
 
     /**

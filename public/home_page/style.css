@@ -1,0 +1,184 @@
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700');
+
+/*--------------------------
+    Navigation Dropdown
+-----------------------------*/
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 0;
+    z-index: 1;
+  }
+
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+/*--------------------------
+    1. SLIDER AREA
+-----------------------------*/
+
+.slide-bg-one {
+    background: rgba(0, 0, 0, 0) url("img/slider/1.jpg") no-repeat scroll center center / cover;
+}
+
+.slide-bg-two {
+    background: rgba(0, 0, 0, 0) url("img/slider/2.jpg") no-repeat scroll center center / cover;
+}
+
+.slide-bg-three {
+    background: rgba(0, 0, 0, 0) url("img/slider/3.jpg") no-repeat scroll center center / cover;
+}
+
+.welcome-slider-area .owl-controls {
+    margin-top: -80px;
+    position: absolute;
+    right: 7%;
+    top: 50%;
+    opacity: 0;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.welcome-slider-area:hover .owl-controls {
+    right: 10%;
+    opacity: 1;
+}
+
+.welcome-slider-area .owl-nav > div {
+    background: #d3ffea none repeat scroll 0 0;
+    border-radius: 50%;
+    bottom: 0;
+    color: #31dc89;
+    font-size: 35px;
+    height: 50px;
+    margin: 10px 0;
+    padding-top: 5px;
+    right: 0;
+    text-align: center;
+    -webkit-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    width: 50px;
+}
+
+.welcome-slider-area .owl-nav > div:hover {
+    background: #31dc89 none repeat scroll 0 0;
+    color: #ffffff;
+}
+
+/*--------------------------------
+    2. FEATURES AREA
+---------------------------------*/
+
+.row.promo-content {
+    background: #ffffff none repeat scroll 0 0;
+    -webkit-box-shadow: 0 9px 9px 0 #c7c7c7;
+    box-shadow: 0 9px 9px 0 #c7c7c7;
+    margin-top: -100px;
+    padding-top: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.features-box-icon {
+    background: #d3ffea none repeat scroll 0 0;
+    border-radius: 5px;
+    color: #31dc89;
+    height: 70px;
+    margin-bottom: 40px;
+    padding-top: 15px;
+    text-align: center;
+    width: 70px;
+}
+
+/*----------------------------------
+    3. FUN FACT AREA
+----------------------------------*/
+
+.fun-fact-area .area-bg {
+    background: rgba(0, 0, 0, 0) url("img/fact-bg.jpg") no-repeat scroll center center / cover;
+}
+
+.fun-fact-area .area-bg::after {
+    background: #000000 none repeat scroll 0 0;
+    opacity: 0.6;
+}
+
+/*---------------------------------
+    4. FOOTER AREA
+----------------------------------*/
+
+.footer-list ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-list ul li {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.footer-list ul li a:hover {
+    color: #31dc89;
+}
+
+label.mt10 {
+    bottom: -52px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+}
+
+label.mt10.valid {
+    bottom: 8px;
+    color: #31dc89;
+    left: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+}
+
+.footer-bottom-area {
+    background: #2e2e43 none repeat scroll 0 0;
+}
+
+.footer-copyright {
+    padding: 30px 0;
+}
+
+/*---------------------------------
+    5. SCROLL TO TOP AREA
+----------------------------------*/
+
+.scrolltotop {
+    background: #404873 none repeat scroll 0 0;
+    bottom: 20px;
+    color: #ffffff;
+    display: none;
+    font-size: 20px;
+    height: 40px;
+    padding-top: 8px;
+    position: fixed;
+    right: 20px;
+    text-align: center;
+    width: 40px;
+    z-index: 9;
+}
+
+.scrolltotop:hover {
+    background: #3ee792;
+    color: #ffffff;
+}

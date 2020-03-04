@@ -243,9 +243,15 @@
                                         class="svg-icon mr-2 ml-1"></i>
                                     Account Setting</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i data-feather="power"
+                                <a class="dropdown-item" href="{{ route('logout') }}" aria-expanded="false" 
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();" style="color: #af1c1c;">
+                                    <i data-feather="power"
                                         class="svg-icon mr-2 ml-1"></i>
                                     Logout</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                                 <div class="dropdown-divider"></div>
                                 <div class="pl-4 p-3"><a href="javascript:void(0)" class="btn btn-sm btn-info">View
                                         Profile</a></div>
@@ -270,7 +276,7 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{route('dashboard')}}"
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{route('home')}}"
                                 aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
                                     class="hide-menu">Dashboard</span></a></li>
                         <li class="list-divider"></li>
@@ -303,9 +309,15 @@
                             <span class="hide-menu">Packages</span></a>
                         </li>
 
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="#" aria-expanded="false">
+                        <li class="sidebar-item"> 
+                        <a class="sidebar-link sidebar-link" href="{{ route('logout') }}" aria-expanded="false" 
+                        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();" style="color: #af1c1c;">
                             <i class="fas fa-power-off"></i>
                             <span class="hide-menu">Logout</span></a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                            </form>
                         </li>
                         
                     </ul>
