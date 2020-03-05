@@ -27,7 +27,8 @@ Route::group([
     Route::resource('files', 'FileController');
 
 
-    Route::post('/spatie/media/upload', 'SpatieMediaController@create')->name('media.upload');
+    Route::get('/files/download/{id}', 'FileController@download');
+
 });
 
 

@@ -4,29 +4,25 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use App\Folder;
+use App\File;
 
 
-
-class File extends Model implements HasMedia
+class File extends Model
 {
-    use SoftDeletes, HasMediaTrait;
-    protected $fillable = ['uuid','name', 'created_by_id'];
+
+    protected $fillable = ['path', 'old_name', 'file_name', 'mime_type', 'folder_id', 'created_by_id'];
 
     public function setFolderIdAttribute($input)
     {
         $this->attributes['folder_id'] = $input ? $input : null;
     }
 
-
-
+    
     public function folder($value='')
     {
         return $this->belongsTo('App\Folder');
     }
-
-
     
     public function user($value='')
     {

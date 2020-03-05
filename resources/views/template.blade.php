@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-    <title>Adminmart Template - The Ultimate Multipurpose admin template</title>
+    <title>Sky Storage</title>
     <!-- Custom CSS -->
     <link href="{{asset('adminmart/assets/extra-libs/c3/c3.min.css') }}" rel="stylesheet">
     <link href="{{asset('adminmart/assets/libs/chartist/dist/chartist.min.css') }}" rel="stylesheet">
@@ -367,6 +367,8 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
+
+   
     <script src="{{asset('adminmart/assets/libs/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{asset('adminmart/assets/libs/popper.js/dist/umd/popper.min.js') }}"></script>
     <script src="{{asset('adminmart/assets/libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
@@ -387,6 +389,7 @@
     <!--This page plugins -->
     <script src="{{asset('adminmart/assets/extra-libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{asset('adminmart/dist/js/pages/datatable/datatable-basic.init.js') }}"></script>
+    @yield('javascript')
 </body>
 
 </html>

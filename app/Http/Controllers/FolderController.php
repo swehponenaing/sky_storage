@@ -45,7 +45,6 @@ class FolderController extends Controller
     {
 
         $folder = Folder::create($request->all());
-
         return redirect()->route('folders.index');
     }
 

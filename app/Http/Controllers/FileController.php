@@ -4,12 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Faker\Provider\Uuid;
-use App\Http\Requests\StoreFilesRequest;
-use App\Http\Controllers\Traits\FileUploadTrait;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Input;
 use App\Folder;
+use App\User;
 use App\File;
 
 class FileController extends Controller
@@ -21,7 +17,9 @@ class FileController extends Controller
      */
     public function index()
     {
-        return view('frontend.files.index');
+        $files =File::all();
+        $folders= Folder::all();
+        return view('frontend.files.index', compact('files', 'folders'));
     }
 
     /**
@@ -31,23 +29,11 @@ class FileController extends Controller
      */
     public function create()
     {
-       
-        
-        // $folders = Folder::where('created_by_id',$created_by)->get();
-        // // dd($folder);
-        // return view('frontend.files.create', compact('created_by','folders'));
-
-
-        $roleId = Auth::getUser()->role_id;
-        $userFilesCount = File::where('created_by_id', Auth::getUser()->id)->count();
-        if ($roleId == 2 && $userFilesCount > 5) {
-            return redirect('/admin/files');
-        }
-
         $folders=Folder::all();
         $created_by=Auth::user()->id;
+ 
 
-        return view('frontend..files.create', compact('folders', 'created_by', 'userFilesCount', 'roleId'));
+        return view('frontend.files.create', compact('folders', 'created_by'));
     }
 
     /**
@@ -58,9 +44,40 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
-        $folder = Folder::create($request->all());
+        $user = Auth::user();
 
-        return redirect()->route('frontend.folders.index');
+        $request->validate([
+            'file' => 'required',
+            'file.*' => 'mimes:doc,pdf,docx,zip,jpg,jpeg,png',
+            'folder_id' => 'required',
+            'created_by_id' =>'required'
+           ]);
+        
+           if($request->hasfile('file'))
+           {
+                  $file=  $request->file('file');
+                  
+                  $oldname=$file->getClientOriginalName();
+                  $upload_name=time().'.'.$file->getClientOriginalExtension();
+                  //$file_name=pathinfo($oldname, PATHINFO_FILENAME);
+                  $file->move(public_path('storage/files'), $upload_name);  
+                  $path='storage/files/'.$upload_name;
+                  $mime_type=$file->getClientMimeType();
+                  
+           }
+           
+
+            $file= new File();
+            $file->path=$path;
+            $file->old_name= $oldname;
+            $file->file_name= $upload_name;
+            $file->mime_type= $mime_type;
+            $file->folder_id=request('folder_id');
+            $file->created_by_id=request('created_by_id');
+            $file->save();
+
+            return redirect()->route('files.index');
+
     }
 
     /**
@@ -71,7 +88,9 @@ class FileController extends Controller
      */
     public function show($id)
     {
-        //
+        $file = FIle::find($id); 
+
+        return view('frontend.files.details', compact('file'));
     }
 
     /**
@@ -106,5 +125,12 @@ class FileController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function download($id)
+    {
+        $file = File::find($id);
+
+       return response()->download($file->path, $file->old_name);
     }
 }

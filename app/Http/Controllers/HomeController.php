@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Folder;
 
 class HomeController extends Controller
 {
@@ -23,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $folder= Folder::all();
-        return view('frontend.folders.index', compact('folder'));
+        $folders= Folder::all();
+        return view('frontend.folders.index', compact('folders'));
     }
 }
