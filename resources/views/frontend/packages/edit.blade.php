@@ -52,6 +52,18 @@
                     </div>
 
                     <div class="form-group row">
+                        <label for="recommend" class="col-sm-2 col-form-label">Recommend</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="recommend" name="recommend">
+                            
+                                <option value="1" @if($package->recommend == 1){{'selected'}} @endif >Yes</option>
+                                <option value="0" @if($package->recommend == 0){{'selected'}} @endif>No</option>
+                            </select>
+          
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                         <div class="col-sm-2"></div>
                         <div class="col-sm-10">
                             <button type="submit" class="btn btn-primary">

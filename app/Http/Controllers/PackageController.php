@@ -15,10 +15,10 @@ class PackageController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    // public function __construct()
-    // {
-    //     $this->middleware('role:User')->only('userpackage');
-    // }
+    public function __construct()
+    {
+        $this->middleware('role:User')->only('userpackage');
+    }
     public function index()
     {
         $packages = Package::all();
@@ -47,12 +47,13 @@ class PackageController extends Controller
     public function store(Request $request)
     {
         
-        // // Validation 
-        // $request->validate([
-        //     "name" => 'required',
-        //     "storage_amount" => 'required',
-        //     "price" => 'required'
-        // ]);
+        // Validation 
+        $request->validate([
+            "name" => 'required',
+            "storage_amount" => 'required',
+            "price" => 'required',
+            "recommend" => 'required',
+        ]);
 
 
         // Store Data
@@ -89,7 +90,8 @@ class PackageController extends Controller
     public function edit($id)
     {
         $package = Package::findorFail($id);
-        return view('frontend.packages.edit',compact('package'));
+        $packages = Package::all();
+        return view('frontend.packages.edit',compact('package', 'packages'));
     }
 
     /**
@@ -105,7 +107,8 @@ class PackageController extends Controller
         $request->validate([
             "name" => 'required',
             "storage_amount" => 'required',
-            "price" => 'required'
+            "price" => 'required',
+            "recommend" => 'required'
         ]);
 
         // Store Data
@@ -113,6 +116,7 @@ class PackageController extends Controller
         $package->name = request('name');
         $package->storage_amount = request('storage_amount');
         $package->price = request('price');
+        $package->recommend = request('recommend');
         $package->save();
 
         // return redirect => indicate file path
