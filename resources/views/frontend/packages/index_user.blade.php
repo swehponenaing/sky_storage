@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-	<h2 style="text-align: center;">Upgrade to Google One for more storage</h2>
+	<h2 style="text-align: center;">Upgrade for more storage</h2>
 		<br>
 			<h4 style="text-align: center;">Get more space and extra benefits</h4>
 		<br>

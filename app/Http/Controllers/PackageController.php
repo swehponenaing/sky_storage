@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+
 use App\Package;
 
 class PackageController extends Controller
@@ -12,12 +14,19 @@ class PackageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+    // public function __construct()
+    // {
+    //     $this->middleware('role:Admin')->only('adminpackage');
+    // }
     public function index()
     {
         $packages = Package::all();
         
         return view('frontend.packages.index_user', compact('packages'));
     }
+
+    
 
     /**
      * Show the form for creating a new resource.
@@ -122,4 +131,11 @@ class PackageController extends Controller
 
         return redirect()->route('packages.index');
     }
+    public function adminpackage()
+    {
+        $packages = Package::all();
+        
+        return view('frontend.packages.index', compact('packages'));
+    }
+
 }
