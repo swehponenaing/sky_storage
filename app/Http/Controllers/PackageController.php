@@ -60,6 +60,7 @@ class PackageController extends Controller
         $package->name = request('name');
         $package->storage_amount = request('storage_amount');
         $package->price = request('price');
+        $package->recommend= request('recommend');
         // dd($package);
         $package->save();
 
