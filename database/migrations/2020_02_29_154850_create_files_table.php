@@ -17,7 +17,7 @@ public function up()
             $table->bigIncrements('id');
             $table->string('path');
             $table->string('old_name');
-            $taable->string('file_name');
+            $table->string('file_name');
             $table->string('mime_type');
             $table->unsignedBigInteger('folder_id');
             $table->unsignedBigInteger('created_by_id');

@@ -48,7 +48,7 @@ class FileController extends Controller
 
         $request->validate([
             'file' => 'required',
-            'file.*' => 'mimes:doc,pdf,docx,zip,jpg,jpeg,png',
+            'file.*' => 'mimes:doc,pdf,docx,pptx,zip,jpg,jpeg,png',
             'folder_id' => 'required',
             'created_by_id' =>'required'
            ]);

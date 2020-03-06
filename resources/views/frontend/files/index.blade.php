@@ -42,6 +42,7 @@
                                 <i class="fas fa-eye"></i>
                                 </a>
                                 <a href="/files/download/{{$row->id}}"  class="btn btn-primary float-left mr-1">
+                                    
                                 <i class="fas fa-download"></i>
                                 </a>
                                 <a href="#" class="btn btn-danger float-left">

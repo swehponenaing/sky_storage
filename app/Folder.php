@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
-
+use App\Folder;
+use App\File;
 class Folder extends Model
 {
     use SoftDeletes;
