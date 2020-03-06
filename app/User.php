@@ -43,5 +43,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Folder');
     }
 
+    public function packages($value='')
+	{
+		return $this->belongsToMany('App\Package')
+							 ->withTimestamps();
+	}
+
     
 }

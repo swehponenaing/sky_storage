@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
-
 
 use App\Package;
 
@@ -47,7 +47,6 @@ class PackageController extends Controller
     public function store(Request $request)
     {
         
-
         // Validation 
         $request->validate([
             "name" => 'required',
@@ -143,6 +142,21 @@ class PackageController extends Controller
         $packages = Package::all();
         
         return view('frontend.packages.index_user', compact('packages'));
+    }
+
+    public function buypackage($id)
+    {
+        $package = Package::find($id);
+        $user = Auth::user();
+
+        $user->storage_limit += $package->storage_amount;
+        $user->save();
+
+        $user->packages()->attach($package->id);
+
+        return redirect()->route('userpackage');
+
+        
     }
 
 }
