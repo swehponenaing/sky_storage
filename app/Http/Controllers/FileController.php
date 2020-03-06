@@ -17,7 +17,8 @@ class FileController extends Controller
      */
     public function index()
     {
-        $files =File::all();
+        $created_by = Auth::user()->id;
+        $files =File::where('created_by_id', $created_by)->get();
         $folders= Folder::all();
         return view('frontend.files.index', compact('files', 'folders'));
     }
@@ -44,11 +45,13 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Auth::user();
 
+        $user = Auth::user();
+        $files_count = File::where('created_by_id', $user->id)->count();
+    
         $request->validate([
             'file' => 'required',
-            'file.*' => 'mimes:doc,pdf,docx,pptx,zip,jpg,jpeg,png',
+            'file.*' => 'mimes: doc, pdf, txt, docx, pptx, zip, jpg, jpeg, png',
             'folder_id' => 'required',
             'created_by_id' =>'required'
            ]);
@@ -56,7 +59,7 @@ class FileController extends Controller
            if($request->hasfile('file'))
            {
                   $file=  $request->file('file');
-                  
+                
                   $oldname=$file->getClientOriginalName();
                   $upload_name=time().'.'.$file->getClientOriginalExtension();
                   //$file_name=pathinfo($oldname, PATHINFO_FILENAME);
@@ -66,7 +69,9 @@ class FileController extends Controller
                   
            }
            
-
+        
+           if($files_count < $user->storage_limit)
+           {
             $file= new File();
             $file->path=$path;
             $file->old_name= $oldname;
@@ -75,8 +80,13 @@ class FileController extends Controller
             $file->folder_id=request('folder_id');
             $file->created_by_id=request('created_by_id');
             $file->save();
-
             return redirect()->route('files.index');
+           }
+           else{
+            return redirect()->route('files.index')->with('limit', 'Your storage limit is full');
+           }
+
+          
 
     }
 

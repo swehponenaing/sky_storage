@@ -92,4 +92,9 @@ class FolderController extends Controller
     {
         //
     }
+
+    public function download($id)
+    {
+        
+    }
 }

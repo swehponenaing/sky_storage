@@ -1,6 +1,16 @@
 @extends('template')
 
 @section('content')
+@if($message= Session::get('limit'))
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" >
+            <p>{{$message }}</p>
+            </div>
+        </div>
+    </div>
+
+@endif
 <div class="row">
     <div class="col-12">
         <div class="card">
