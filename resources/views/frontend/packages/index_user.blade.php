@@ -38,7 +38,7 @@
 					<h4 style="color: #f1948a; font-weight: bold;">Recommended</h4>
 					<h1 class="card-title">{{$row->storage_amount}} Files</h1>
 					<br>
-					<a class="btn btn-primary">MMK {{$row->price}}</a><br>
+					<a class="btn btn-primary" href="{{route('buypackage', $row->id)}}">MMK {{$row->price}}</a><br>
 					<hr style="background-color: white;">
 					<p class="card-text" style="text-align: left;">includes</p>
 					<div class="row">
