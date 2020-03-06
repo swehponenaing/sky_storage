@@ -18,6 +18,7 @@ class CreatePackagesTable extends Migration
             $table->string('name');
             $table->integer('storage_amount');
             $table->integer('price');
+            $table->boolean('recommend');
             $table->timestamps();
         });
     }

@@ -15,10 +15,10 @@ class PackageController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    // public function __construct()
-    // {
-    //     $this->middleware('role:User')->only('userpackage');
-    // }
+    public function __construct()
+    {
+        $this->middleware('role:User')->only('userpackage');
+    }
     public function index()
     {
         $packages = Package::all();
@@ -47,11 +47,20 @@ class PackageController extends Controller
     public function store(Request $request)
     {
         
+<<<<<<< HEAD
         // // Validation 
         $request->validate([
             "name" => 'required',
             "storage_amount" => 'required',
             "price" => 'required'
+=======
+        // Validation 
+        $request->validate([
+            "name" => 'required',
+            "storage_amount" => 'required',
+            "price" => 'required',
+            "recommend" => 'required',
+>>>>>>> 4f5556963a5e6e5da87e370c1a4abf2efe7cb189
         ]);
 
 
@@ -60,6 +69,7 @@ class PackageController extends Controller
         $package->name = request('name');
         $package->storage_amount = request('storage_amount');
         $package->price = request('price');
+        $package->recommend= request('recommend');
         // dd($package);
         $package->save();
 
@@ -88,7 +98,8 @@ class PackageController extends Controller
     public function edit($id)
     {
         $package = Package::findorFail($id);
-        return view('frontend.packages.edit',compact('package'));
+        $packages = Package::all();
+        return view('frontend.packages.edit',compact('package', 'packages'));
     }
 
     /**
@@ -104,7 +115,8 @@ class PackageController extends Controller
         $request->validate([
             "name" => 'required',
             "storage_amount" => 'required',
-            "price" => 'required'
+            "price" => 'required',
+            "recommend" => 'required'
         ]);
 
         // Store Data
@@ -112,6 +124,7 @@ class PackageController extends Controller
         $package->name = request('name');
         $package->storage_amount = request('storage_amount');
         $package->price = request('price');
+        $package->recommend = request('recommend');
         $package->save();
 
         // return redirect => indicate file path
