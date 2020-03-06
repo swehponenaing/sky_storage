@@ -48,11 +48,11 @@ class PackageController extends Controller
     {
         
         // // Validation 
-        // $request->validate([
-        //     "name" => 'required',
-        //     "storage_amount" => 'required',
-        //     "price" => 'required'
-        // ]);
+        $request->validate([
+            "name" => 'required',
+            "storage_amount" => 'required',
+            "price" => 'required'
+        ]);
 
 
         // Store Data

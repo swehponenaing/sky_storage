@@ -33,7 +33,7 @@ Route::group([
     
 
 });
-Route::get('/userpackage', 'PackageController@userpackage')->middleware('role:User');
+Route::get('/userpackage', 'PackageController@userpackage')->name('userpackage')->middleware('role:User');
 
 
 
