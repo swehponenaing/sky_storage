@@ -47,20 +47,14 @@ class PackageController extends Controller
     public function store(Request $request)
     {
         
-<<<<<<< HEAD
-        // // Validation 
-        $request->validate([
-            "name" => 'required',
-            "storage_amount" => 'required',
-            "price" => 'required'
-=======
+
         // Validation 
         $request->validate([
             "name" => 'required',
             "storage_amount" => 'required',
             "price" => 'required',
             "recommend" => 'required',
->>>>>>> 4f5556963a5e6e5da87e370c1a4abf2efe7cb189
+
         ]);
 
 
@@ -86,7 +80,7 @@ class PackageController extends Controller
      */
     public function show($id)
     {
-        // return view('frontend.packages.show');
+        // 
     }
 
     /**

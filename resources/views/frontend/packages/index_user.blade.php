@@ -2,6 +2,19 @@
 
 @section('content')
 
+@if($message= Session::get('success'))
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="alert alert-success">
+			<p>{{$message}}</p>
+		</div>
+	</div>
+</div>
+@endif
+
+
+
 <div class="container">
 	<h2 style="text-align: center;">Upgrade for more storage</h2>
 		<br>
@@ -38,7 +51,7 @@
 					<h4 style="color: #f1948a; font-weight: bold;">Recommended</h4>
 					<h1 class="card-title">{{$row->storage_amount}} Files</h1>
 					<br>
-					<a class="btn btn-primary">MMK {{$row->price}}</a><br>
+					<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#buy_package">MMK {{$row->price}}</a><br>
 					<hr style="background-color: white;">
 					<p class="card-text" style="text-align: left;">includes</p>
 					<div class="row">
@@ -50,8 +63,7 @@
 							<p style="text-align: left;">{{$row->storage_amount}} files storage</p>
 							<p style="text-align: left;">Extra member benefits</p>
 						</div>
-					</div>
-					
+					</div>	
 					
 				</div>
 			</div>
@@ -60,4 +72,95 @@
 	</div>
 </div>
 
+
+
+<div class="modal fade" id="buy_package" tabindex="-1" role="dialog" aria-labelledby="buy_package" aria-hidden="true">
+
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+
+        <h3 style="text-align: center;" class="modal-title" id="buy_package">💫Buying Storage Amount💫</h3>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+      </div>
+
+      <div class="modal-body">
+
+
+        Choose Payment Type<br>
+
+        <i class="fa fa-cc-paypal" style="color: blue;font-size: 30px;padding: 5px;" onclick="document.getElementById('form').style.display='block';"></i>
+
+        <i class="fa fa-cc-visa" style="color: blue;font-size: 30px;padding: 5px;" onclick="document.getElementById('form').style.display='block';"></i>
+
+        <i class="fa fa-cc-mastercard" style="color: blue;font-size: 30px;padding: 5px;" onclick="document.getElementById('form').style.display='block';"></i>
+
+        <i class="fa fa-credit-card" style="color: blue;font-size: 30px;padding: 5px;" onclick="document.getElementById('form').style.display='block';"></i>
+
+        <br>
+
+
+        <form style="display: none;" id="form">
+
+          <div class="form-group">
+            <label for="account" class="col-form-label">Account:</label>
+            <input type="text" class="form-control" id="account">
+            <br>
+            <button class="btn btn-success" onclick="showMain()">Payment</button>
+
+          </div>
+
+        </form>
+
+      </div>
+
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 @endsection
+
+@section('script')
+<script type="text/javascript">
+  $('#buy_package').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) 
+
+  var recipient = button.data('whatever')
+  var modal = $(this)
+  modal.find('.modal-body input').val(recipient)
+})
+</script>
+@endsection
+
+
+
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+

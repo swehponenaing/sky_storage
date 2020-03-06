@@ -20,6 +20,9 @@
 
     <!-- Tables page plugin CSS -->
     <link href="{{asset('adminmart/assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
+
+<!-- Font Awesome -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -285,6 +288,8 @@
 <!--This page plugins -->
 <script src="{{asset('adminmart/assets/extra-libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{asset('adminmart/dist/js/pages/datatable/datatable-basic.init.js') }}"></script>
+
+@yield('script')
 </body>
 
 </html>
