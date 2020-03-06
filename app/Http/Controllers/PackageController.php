@@ -17,13 +17,13 @@ class PackageController extends Controller
     
     // public function __construct()
     // {
-    //     $this->middleware('role:Admin')->only('adminpackage');
+    //     $this->middleware('role:User')->only('userpackage');
     // }
     public function index()
     {
         $packages = Package::all();
         
-        return view('frontend.packages.index_user', compact('packages'));
+        return view('frontend.packages.index', compact('packages'));
     }
 
     
@@ -46,8 +46,8 @@ class PackageController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        // Validation 
+        
+        // // Validation 
         // $request->validate([
         //     "name" => 'required',
         //     "storage_amount" => 'required',
@@ -132,11 +132,11 @@ class PackageController extends Controller
 
         return redirect()->route('packages.index');
     }
-    public function adminpackage()
+    public function userpackage()
     {
         $packages = Package::all();
         
-        return view('frontend.packages.index', compact('packages'));
+        return view('frontend.packages.index_user', compact('packages'));
     }
 
 }
