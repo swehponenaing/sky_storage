@@ -13,11 +13,6 @@ class File extends Model
 
     protected $fillable = ['path', 'old_name', 'file_name', 'mime_type', 'folder_id', 'created_by_id'];
 
-    public function setFolderIdAttribute($input)
-    {
-        $this->attributes['folder_id'] = $input ? $input : null;
-    }
-
     
     public function folder($value='')
     {

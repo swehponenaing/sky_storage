@@ -1,6 +1,16 @@
 @extends('template')
 
 @section('content')
+@if($message= Session::get('limit'))
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" >
+            <p>{{$message }}</p>
+            </div>
+        </div>
+    </div>
+
+@endif
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -41,8 +51,7 @@
                                 <a href="{{route('files.show', $row->id)}}"  class="btn btn-success float-left mr-1">
                                 <i class="fas fa-eye"></i>
                                 </a>
-                                <a href="/files/download/{{$row->id}}"  class="btn btn-primary float-left mr-1">
-                                    
+                                <a href="{{route('files.download', $row->id)}}"  class="btn btn-primary float-left mr-1">
                                 <i class="fas fa-download"></i>
                                 </a>
                                 <a href="#" class="btn btn-danger float-left">

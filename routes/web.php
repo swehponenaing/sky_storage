@@ -28,7 +28,7 @@ Route::group([
     Route::resource('packages', 'PackageController')->middleware('role:User');
 
 
-    Route::get('/files/download/{id}', 'FileController@download');
+    Route::get('/files/download/{id}', 'FileController@download')->name('files.download');
 
     
 

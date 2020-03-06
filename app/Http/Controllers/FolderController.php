@@ -120,4 +120,9 @@ class FolderController extends Controller
 
         return redirect()->route('folders.index');
     }
+
+    public function download($id)
+    {
+        
+    }
 }
