@@ -45,6 +45,7 @@ class FolderController extends Controller
     {
 
         $folder = Folder::create($request->all());
+
         return redirect()->route('folders.index');
     }
 
@@ -67,7 +68,9 @@ class FolderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $created_by = Auth::user();
+        $folder=Folder::find($id);
+        return view('frontend.folders.edit',compact('folder','created_by'));
     }
 
     /**
@@ -78,8 +81,30 @@ class FolderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    { 
+
+        // // validation //(2)
+        // $request->validate([
+
+        //     "name" => 'required',
+        //     'user' => 'required'    
+        // ]);
+
+       // Upload // (3)
+
+
+       // Store Data //(4)
+        $folder = Folder::find($id);
+
+        $folder->name =request('name');
+        // $folder->created_by_id=request('user');
+
+
+        $folder->save();
+
+
+       // Return redirect //(5)
+        return redirect()->route('folders.index');
     }
 
     /**
@@ -90,6 +115,9 @@ class FolderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $folder = Folder::find($id);
+        $folder->delete();
+
+        return redirect()->route('folders.index');
     }
 }
