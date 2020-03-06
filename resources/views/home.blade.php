@@ -254,7 +254,8 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                         <div class="footer-copyright text-center wow fadeIn">
-                            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved.</a></p>
+                            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved. Designed and Developed by <a
+                    href="https://www.facebook.com/tildy.hsu"><span style="font-weight: bold;">Hsu Yati Khin</span></a></p>
                         </div>
                     </div>
                 </div>

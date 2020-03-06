@@ -17,58 +17,43 @@
                 </div>
             </div>
         </div>
-        <div class="card-body">
-
-            <div class="table-responsive">
-                <table id="zero_config" class="table table-striped table-bordered display no-wrap"
-                style="width:100%">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Name</th>
-                        <th>Storage Amount</th>
-                        <th>Price</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @php $i=1; @endphp
-                    @foreach($p as $row)
-                    <tr>
-                        <td>{{$i++}}</td>
-                        <td>{{$row->name}}</td>
-                        <td>{{$row->storage_amount}}</td>
-                        <td>{{$row->price}}</td>
-                        <td>
-                            <a href="{{route('packages.edit',$row->id)}}" class="btn btn-primary float-left mr-1"><i class="fas fa-edit"></i></a>
-
-
-                            <form method="POST" action="{{route('packages.destroy',$row->id)}}" onsubmit="return confirm('Are you sure to delete this package?')">
-                                @csrf
-                                @method('DELETE')
-
-                                <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-
-                                <form>
-
-
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>No</th>
-                                <th>Name</th>
-                                <th>Storage Amount</th>
-                                <th>Price</th>
-                                <th>Action</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
-@endsection
+</div>
+
+<div class="container">
+    <div class="row">
+        @foreach($packages as $row) 
+        <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="card" style="width: 13rem;"> 
+
+                <div class="card-header" style="background-color: #ededed">
+                    <img src="{{asset('image/package.png')}}" class="card-img-fluid" alt="Package" width="100%">
+                </div> 
+
+                <div class="card-body" style="background-color: #ffffff;">
+
+                    <h5 class="card-title" style="text-align: center;">{{$row->name}}</h5>
+                    <div style="margin-left: 22%;">
+                        <a href="{{route('packages.edit', $row->id)}}" type="submit" class="btn
+                            btn-primary float-left mr-1" style="display: block;"> <i class="far
+                            fa-edit"></i> </a>
+
+                            <form method="POST" action="{{route('packages.destroy',$row->id)}}" onsubmit="return confirm('Are you sure to delete?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger" style="display: block;">
+                                    <i class="far fa-trash-alt"></i>
+                                </button>
+                            </form>
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>      
+    </div>
+    
+    @endsection
