@@ -6,10 +6,10 @@
     <title>Details</title>
 </head>
 <body>
-  
-
+<h2>{{asset($file->old_name)}}</h2>
     <p>
-        <iframe src="{{asset($file->path)}}" frameborder="0"></iframe>
+      
+
     </p>
 
 </body>

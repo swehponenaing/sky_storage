@@ -90,6 +90,7 @@ class FileController extends Controller
     {
         $file = FIle::find($id); 
 
+
         return view('frontend.files.details', compact('file'));
     }
 

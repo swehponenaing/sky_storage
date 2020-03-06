@@ -27,7 +27,7 @@ Route::group([
     Route::resource('files', 'FileController');
 
 
-    Route::get('/files/download/{id}', 'FileController@download');
+    Route::get('/files/download/{id}', 'FileController@download')->name('files.download');
 
 });
 
