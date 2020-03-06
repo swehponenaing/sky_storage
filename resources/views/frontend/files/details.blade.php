@@ -1,3 +1,7 @@
+@extends('template')
+
+@section('content')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +10,20 @@
     <title>Details</title>
 </head>
 <body>
-<h2>{{asset($file->old_name)}}</h2>
-    <p>
-      
 
-    </p>
+    <div class="container-fluid">
+    	<div class="row">
+    		<div class="col-lg-12 col-md-12 col-sm-12">
+    			<!-- <iframe src="{{asset($file->path)}}" frameborder="0"></iframe> -->
+
+    			<!-- <embed src="{{asset($file->path)}}" width="100%" height="600px" /> -->
+
+    				<embed src="{{asset($file->path)}}" type="application/pdf" width="100%" height="600px" />
+
+    		</div>
+    	</div>
+    </div>
 
 </body>
 </html>
+@endsection

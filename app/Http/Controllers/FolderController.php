@@ -31,7 +31,7 @@ class FolderController extends Controller
     public function create()
     {
         $created_by = Auth::user();
-        $folderes=Folder::all();
+        $folders=Folder::all();
         return view('frontend.folders.create', compact('created_by', 'folders'));
     }
 

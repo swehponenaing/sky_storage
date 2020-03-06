@@ -304,7 +304,7 @@
                             <span class="hide-menu">Files</span></a>
                         </li>
 
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="#" aria-expanded="false">
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{ route('packages.index') }}" aria-expanded="false">
                             <i class="fas fa-ticket-alt"></i>
                             <span class="hide-menu">Packages</span></a>
                         </li>
