@@ -25,7 +25,7 @@ Route::group([
 ], function(){
     Route::resource('folders', 'FolderController');
     Route::resource('files', 'FileController');
-    Route::resource('packages', 'PackageController')->middleware('role:User');
+    Route::resource('packages', 'PackageController')->middleware('role:Admin');
 
 
     Route::get('/files/download/{id}', 'FileController@download')->name('files.download');
@@ -33,7 +33,7 @@ Route::group([
     
 
 });
-Route::get('/adminpackage', 'PackageController@adminpackage')->middleware('role:Admin');
+Route::get('/userpackage', 'PackageController@userpackage')->middleware('role:User');
 
 
 
