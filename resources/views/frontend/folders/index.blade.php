@@ -28,7 +28,9 @@
             <div class="card" style="width: 13rem;"> 
 
                 <div class="card-header" style="background-color: #ededed">
-                    <img src="{{asset('image/folder1.png')}}" class="card-img-top" alt="" width="10px">
+                    <a href="{{route('showfolderfile', $row->id)}}">
+                        <img src="{{asset('image/folder1.png')}}" class="card-img-top" alt="" width="10px">
+                    </a>
                 </div> 
 
                 <div class="card-body" style="background-color: #ffffff;">
@@ -36,15 +38,20 @@
 
 
                     <h5 class="card-title" style="text-align: center;">{{$row->name}}</h5>
-                    <div style="margin-left: 22%;">
+                    <div style="margin-left: 8%;">
                         <a href="{{route('folders.edit', $row->id)}}" type="submit" class="btn
-                            btn-primary float-left mr-1" style="display: block;"> <i class="far
-                            fa-edit"></i> </a>
+                        btn-primary float-left mr-1">
+                            <i class="far fa-edit"></i> 
+                        </a>
+                        <a href="{{route('folders.downloadzip', $row->id)}}" type="submit" class="btn
+                        btn-primary float-left mr-1"> 
+                            <i class="fas fa-download"></i> 
+                        </a>
 
                             <form method="POST" action="{{route('folders.destroy',$row->id)}}" onsubmit="return confirm('Are you sure to delete?')">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger" style="display: block;">
+                                <button type="submit" class="btn btn-danger mx-auto" >
                                     <i class="far fa-trash-alt"></i>
                                 </button>
                             </form>

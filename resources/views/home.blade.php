@@ -47,7 +47,7 @@
                         <div id="main-nav" class="stellarnav">
                             <ul id="nav" class="nav navbar-nav pull-right">
                                 <li class="active"><a href="#home">Home</a></li>
-                                <li><a href="#dashboard">Dashboard</a></li>
+                                <li><a href="{{route('dashboard')}}">Dashboard</a></li>
                                 <li><a href="#fact">Fact</a></li>
                                 @guest
                                 <li>

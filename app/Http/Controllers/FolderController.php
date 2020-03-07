@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests\StoreFoldersRequest;
+use ZipArchive;
 
 class FolderController extends Controller
 {
@@ -19,7 +20,8 @@ class FolderController extends Controller
      */
     public function index()
     {
-        $folders= Folder::all();
+        $created_by = Auth::user()->id;
+        $folders =Folder::where('created_by_id', $created_by)->get();
         return view('frontend.folders.index', compact('folders'));
     }
 
@@ -83,12 +85,11 @@ class FolderController extends Controller
     public function update(Request $request, $id)
     { 
 
-        // // validation //(2)
-        // $request->validate([
+        // validation //(2)
+        $request->validate([
 
-        //     "name" => 'required',
-        //     'user' => 'required'    
-        // ]);
+            "name" => 'required',  
+        ]);
 
        // Upload // (3)
 
@@ -125,4 +126,39 @@ class FolderController extends Controller
     {
         
     }
+
+    public function showfile($id)
+    {
+        $files= File::where('folder_id', $id)->get();
+        return view('frontend.folders.showfile', compact('files'));
+    }
+
+    public function downloadZip($id)
+    {
+        $folder = Folder::find($id);
+        $files = File::where('folder_id', $id)->get();
+        $zipname = $folder->name.".zip";
+       
+        $zip = new ZipArchive;
+        $zip->open($zipname, ZipArchive::CREATE);
+        
+        foreach ($files as $file) {
+            $file_path=$file->path;
+            $zip->addFile($file_path, $file->old_name);
+          }
+        $zip->close();
+
+          if(file_exists($zipname))
+          {
+            header('Content-Type: application/zip');
+            header('Content-disposition: attachment; filename='.$zipname);
+            header('Content-Length: ' . filesize($zipname));
+            readfile($zipname);
+            unlink($zipname);
+            return redirect()->route('folders.index');
+          }
+          
+        
+    }
+    
 }

@@ -173,11 +173,11 @@
                     <li class="list-divider"></li>
                     <li class="nav-small-cap"><span class="hide-menu">User Management</span></li>
 
-                    <li class="sidebar-item"> <a class="sidebar-link" href="#" aria-expanded="false">
+                    <li class="sidebar-item"> <a class="sidebar-link" href="{{route('roles.index')}}" aria-expanded="false">
                         <i class="fas fa-briefcase"></i>
                         <span class="hide-menu">Roles</span></a>
                     </li>
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="#" aria-expanded="false">
+                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="('users.index')" aria-expanded="false">
                         <i class="fas fa-user"></i>
                         <span class="hide-menu">Users</span></a>
                     </li>
