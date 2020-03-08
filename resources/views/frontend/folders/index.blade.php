@@ -32,8 +32,6 @@
                 </div> 
 
                 <div class="card-body" style="background-color: #ffffff;">
-                    <!-- #f5f5f5 -->
-
 
                     <h5 class="card-title" style="text-align: center;">{{$row->name}}</h5>
                     <div style="margin-left: 22%;">

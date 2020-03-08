@@ -83,12 +83,12 @@ class FolderController extends Controller
     public function update(Request $request, $id)
     { 
 
-        // // validation //(2)
-        // $request->validate([
+        // validation 
+        $request->validate([
 
-        //     "name" => 'required',
-        //     'user' => 'required'    
-        // ]);
+            "name" => 'required',
+            'user' => 'required'    
+        ]);
 
        // Upload // (3)
 

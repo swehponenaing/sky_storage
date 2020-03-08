@@ -53,9 +53,23 @@
                         @csrf
 
                         <div class="row">
+
+                            <!-- <div class="col-lg-12">
+                                <div class="form-group">
+                                    <input class="form-control @error('photo') is-invalid @enderror" type="file" placeholder="Your photo" name="photo"  required autocomplete="photo" autofocus>
+
+                                    @error('photo')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+
+                                </div>
+                            </div> -->
+
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input class="form-control @error('name') is-invalid @enderror" type="text" placeholder="Your Name" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    <input class="form-control @error('name') is-invalid @enderror" type="text" placeholder="Your name" name="name"  required autocomplete="name">
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -65,9 +79,10 @@
 
                                 </div>
                             </div>
+
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input class="form-control @error('email') is-invalid @enderror" type="email" placeholder="Email Address" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                    <input class="form-control @error('email') is-invalid @enderror" type="email" placeholder="Email Address" name="email" required autocomplete="email">
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -95,7 +110,6 @@
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
                                 </div>
                             </div>
-
 
                             <div class="col-lg-12 text-center">
                                 <button type="submit" class="btn btn-block btn-primary">Sign Up</button>

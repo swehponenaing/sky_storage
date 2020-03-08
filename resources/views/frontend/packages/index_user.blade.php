@@ -2,19 +2,6 @@
 
 @section('content')
 
-@if($message= Session::get('success'))
-
-<div class="row">
-	<div class="col-md-12">
-		<div class="alert alert-success">
-			<p>{{$message}}</p>
-		</div>
-	</div>
-</div>
-@endif
-
-
-
 <div class="container">
 	<h2 style="text-align: center;">Upgrade for more storage</h2>
 		<br>
@@ -71,8 +58,6 @@
 @endforeach
 	</div>
 </div>
-
-
 
 <div class="modal fade" id="buy_package" tabindex="-1" role="dialog" aria-labelledby="buy_package" aria-hidden="true">
 
@@ -141,7 +126,6 @@
 })
 </script>
 @endsection
-
 
 
 <div class="modal" tabindex="-1" role="dialog">

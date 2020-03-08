@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'storage_limit'
+        'photo', 'name', 'email', 'password', 'password_length', 'storage_limit'
     ];
 
     /**
@@ -48,6 +48,5 @@ class User extends Authenticatable
 		return $this->belongsToMany('App\Package')
 							 ->withTimestamps();
 	}
-
     
 }
