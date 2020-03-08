@@ -30,8 +30,10 @@ class FileController extends Controller
      */
     public function create()
     {
-        $folders=Folder::all();
+        
+        
         $created_by=Auth::user()->id;
+        $folders=Folder::where('created_by_id', $created_by)->get();
  
 
         return view('frontend.files.create', compact('folders', 'created_by'));
@@ -51,7 +53,7 @@ class FileController extends Controller
     
         $request->validate([
             'file' => 'required',
-            'file.*' => 'mimes: doc, pdf, txt, docx, pptx, zip, jpg, jpeg, png',
+            'file.*' => 'mimes: doc, pdf, txt, docx, pptx, zip, jpg, jpeg, png, svg, xml, html, csv',
             'folder_id' => 'required',
             'created_by_id' =>'required'
            ]);

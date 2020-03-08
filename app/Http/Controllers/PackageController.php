@@ -154,7 +154,7 @@ class PackageController extends Controller
 
         $user->packages()->attach($package->id);
 
-        return redirect()->route('userpackage');
+        return redirect()->route('userpackage')->with('success', 'Congratulations, you got more storage!');
 
         
     }

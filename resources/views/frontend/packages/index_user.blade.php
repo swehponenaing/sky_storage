@@ -96,7 +96,7 @@
             <label for="account" class="col-form-label">Account:</label>
             <input type="text" class="form-control" id="account">
             <br>
-            <button class="btn btn-success" onclick="showMain()">Payment</button>
+            <a class="btn btn-success" href="{{route('buypackage', $row->id)}}" onclick="showMain()">Payment</a>
 
           </div>
 
