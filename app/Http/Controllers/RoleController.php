@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use App\User;
 
+
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -59,12 +60,20 @@ class RoleController extends Controller
      */
     public function show($id)
     {
+        $users = User::all();
+        
+        $role= Role::find($id);
 
-        $users = User::with('roles')->where('role_id', $id)->all();
+        // $role_user= $role->users->pluck('name');
+        $user_id= $role->users->pluck('id');
 
-        $role = Role::findOrFail($id);
-
-        return view('admin.roles.show', compact('role', 'users'));
+       // $user= User::where('id', $user_id)->get();
+        for ($i=0; $i < count($user_id); $i++) { 
+            $user[] = User::where('id',$user_id[$i])->get();
+        }
+        //dd($user);
+        
+        return view('admin.roles.show', compact( 'user', 'role'));
     }
 
     /**

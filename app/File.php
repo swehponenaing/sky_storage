@@ -11,7 +11,7 @@ use App\File;
 class File extends Model
 {
 
-    protected $fillable = ['path', 'old_name', 'file_name', 'mime_type', 'folder_id', 'created_by_id'];
+    protected $fillable = ['path', 'old_name', 'file_name', 'mime_type', 'folder_id', 'created_by_id', 'status'];
 
     
     public function folder($value='')

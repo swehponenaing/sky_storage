@@ -41,7 +41,7 @@
                         </thead>
                         <tbody>
                         @php $i=1 @endphp
-                        @foreach($roles as $row)
+                        @foreach($users as $row)
                             <tr>
                                 <td>{{$i++}}</td>
                                 <td>{{$row->name}}</td>

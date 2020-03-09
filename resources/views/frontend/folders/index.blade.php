@@ -1,6 +1,17 @@
 @extends('template')
 
 @section('content')
+
+@if($message= Session::get('success'))
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success" >
+            <p>{{$message }}</p>
+            </div>
+        </div>
+    </div>
+@endif
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -24,6 +35,7 @@
 <div class="container">
     <div class="row">
         @foreach($folders as $row) 
+        @if($row->status == 1)
         <div class="col-lg-3 col-md-4 col-sm-6">
             <div class="card" style="width: 13rem;"> 
 
@@ -48,19 +60,15 @@
                             <i class="fas fa-download"></i> 
                         </a>
 
-                            <form method="POST" action="{{route('folders.destroy',$row->id)}}" onsubmit="return confirm('Are you sure to delete?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger mx-auto" >
-                                    <i class="far fa-trash-alt"></i>
-                                </button>
-                            </form>
-                            
+                        <a href="{{route('foldertemporarydelete', $row->id)}}" class="btn btn-danger float-left" onclick="return confirm('Are you sure to delete?')">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
                         </div>
 
                     </div>
                 </div>
             </div>
+            @endif
             @endforeach
         </div>      
     </div>

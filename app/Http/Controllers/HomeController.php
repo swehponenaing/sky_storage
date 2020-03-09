@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $folders= Folder::all();
-        return view('frontend.folders.index', compact('folders'));
+        
+        return view('frontend.dashboard');
     }
 }

@@ -21,6 +21,7 @@ public function up()
             $table->string('mime_type');
             $table->unsignedBigInteger('folder_id');
             $table->unsignedBigInteger('created_by_id');
+            $table->boolean('status')->default(1);
             $table->timestamps();
             $table->softDeletes();
             

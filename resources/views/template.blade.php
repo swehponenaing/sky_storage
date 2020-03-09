@@ -23,6 +23,7 @@
 
 <!-- Font Awesome -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -167,23 +168,33 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
-                <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{route('home')}}"
+                <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{route('dashboard')}}"
                     aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
                     class="hide-menu">Dashboard</span></a></li>
+                    
                     <li class="list-divider"></li>
+                    @role('Admin')
+                    <!-- @php $rolename =Auth::user()->getRoleNames(0); var_dump($rolename); @endphp
+                    @if($rolename = "Admin") -->
+                    
                     <li class="nav-small-cap"><span class="hide-menu">User Management</span></li>
 
                     <li class="sidebar-item"> <a class="sidebar-link" href="{{route('roles.index')}}" aria-expanded="false">
                         <i class="fas fa-briefcase"></i>
                         <span class="hide-menu">Roles</span></a>
                     </li>
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="('users.index')" aria-expanded="false">
+                    <!-- <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{route('users.index')}}" aria-expanded="false">
                         <i class="fas fa-user"></i>
                         <span class="hide-menu">Users</span></a>
-                    </li>
+                    </li> -->
+                    <!-- @endif -->
+
 
 
                     <li class="list-divider"></li>
+                    @endrole
+
+                    @role('User')
                     <li class="nav-small-cap"><span class="hide-menu">Applications</span></li>
 
                     <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{route('folders.index')}}" aria-expanded="false">
@@ -194,20 +205,33 @@
                         <i class="fas fa-file"></i>
                         <span class="hide-menu">Files</span></a>
                     </li>
+                    @endrole
 
 
+                    
+                    <li class="nav-small-cap"><span class="hide-menu">Applications</span></li>
                     <li class="sidebar-item">
-
                     @if(Auth::user()->name=='Admin')
+                    
                     <a class="sidebar-link sidebar-link" href="{{ route('packages.index') }}" aria-expanded="false">
                         
                     @else
                     <a class="sidebar-link sidebar-link" href="{{ route('userpackage') }}" aria-expanded="false">
                     @endif
-
+                    
                     <i class="fas fa-ticket-alt"></i>
-                        <span class="hide-menu">Packages</span></a>
+                        <span class="hide-menu">Packages</span>
+                    </a>
                     </li>
+
+                    @role('User')
+
+                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{route('trash.index')}}" aria-expanded="false">
+                        <i class="far fa-trash-alt"></i>
+                        <span class="hide-menu">Trash</span></a>
+                    </li>
+                    @endrole
+                    
 
 
                     <li class="sidebar-item"> 

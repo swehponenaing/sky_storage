@@ -101,7 +101,7 @@
                                 <button type="submit" class="btn btn-block btn-primary">Sign Up</button>
                             </div>
                             <div class="col-lg-12 text-center mt-5">
-                                Already have an account? <a href="#" class="text-danger">Sign In</a>
+                                Already have an account? <a href="{{route('login')}}" class="text-danger">Sign In</a>
                             </div>
                         </div>
                     </form>

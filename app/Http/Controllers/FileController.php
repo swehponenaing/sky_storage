@@ -20,6 +20,7 @@ class FileController extends Controller
         $created_by = Auth::user()->id;
         $files =File::where('created_by_id', $created_by)->get();
         $folders= Folder::all();
+         
         return view('frontend.files.index', compact('files', 'folders'));
     }
 
@@ -53,7 +54,7 @@ class FileController extends Controller
     
         $request->validate([
             'file' => 'required',
-            'file.*' => 'mimes: doc, pdf, txt, docx, pptx, zip, jpg, jpeg, png, svg, xml, html, csv',
+            'file.*' => 'mimes: doc, pdf, txt, docx, pptx, zip, jpg, jpeg, png, svg, xml, html, csv,',
             'folder_id' => 'required',
             'created_by_id' =>'required'
            ]);
@@ -82,7 +83,7 @@ class FileController extends Controller
             $file->folder_id=request('folder_id');
             $file->created_by_id=request('created_by_id');
             $file->save();
-            return redirect()->route('files.index');
+            return redirect()->route('files.index')->with('success', 'Your file has successfully uploaded');
            }
            else{
             return redirect()->route('files.index')->with('limit', 'Your storage limit is full');
@@ -100,9 +101,7 @@ class FileController extends Controller
      */
     public function show($id)
     {
-        $file = FIle::find($id); 
-
-
+        $file = File::find($id); 
         return view('frontend.files.details', compact('file'));
     }
 
@@ -137,7 +136,10 @@ class FileController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $file = File::find($id);
+        $file->delete();
+
+        return redirect()->route('trash.index')->with('success', 'Your file has permanently deleted!');
     }
 
     public function download($id)
@@ -145,5 +147,13 @@ class FileController extends Controller
         $file = File::find($id);
 
        return response()->download($file->path, $file->old_name);
+    }
+
+    public function temporarydelete($id)
+    {
+        $file = File::find($id);
+        $file->status = 0;
+        $file->save();
+        return redirect()->route('files.index')->with('success', 'Your file has deleted successfully! You can restore it later inside Trash.');
     }
 }

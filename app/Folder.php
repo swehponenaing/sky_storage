@@ -8,7 +8,7 @@ use App\Folder;
 use App\File;
 class Folder extends Model
 {
-    protected $fillable = ['name', 'created_by_id'];
+    protected $fillable = ['name', 'created_by_id', 'status'];
 
     public function setCreatedByIdAttribute($input)
     {
