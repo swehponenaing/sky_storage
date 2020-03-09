@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="APPTON HTML5 Template is a simple Smooth Personal App Landing Template">
     <meta name="keywords" content="App, Landing, Business, Onepage, Html, Business">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('home_page/img/logo.png')}}">
+    <title>Sky Storage</title>
 
-    <title>File Storage Template</title>
 
-    <link rel="shortcut icon" type="image/ico" href="{{asset('home_page/img/favicon.png')}}">
 
     <link href="{{asset('home_page/css/plugins.css')}}" rel="stylesheet">
     <link href="{{asset('home_page/css/theme.css')}}" rel="stylesheet">

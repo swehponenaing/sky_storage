@@ -92,8 +92,6 @@ class FolderController extends Controller
 
         ]);
 
-
-
        // Store Data //(4)
         $folder = Folder::find($id);
 

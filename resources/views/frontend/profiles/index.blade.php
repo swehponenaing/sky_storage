@@ -2,6 +2,16 @@
 
 @section('content')
 
+@if($message= Session::get('error'))
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger" >
+            <p>{{$message }}</p>
+            </div>
+        </div>
+    </div>
+@endif
+
 <div class="container">
     <h2 style="text-align: center;">Personal info</h2>
     <h4 style="text-align: center;">Basic info, like your name and photo, that you use on Sky Storage services</h4><br>
@@ -30,7 +40,7 @@
                                 <a href="#" data-toggle="modal" data-target="#edit_photo">
                                     <a class="nav-link dropdown-toggle" href="#" data-toggle="modal" data-target="#edit_photo"
                                     aria-haspopup="true" aria-expanded="false">
-                                    <img src="{{asset('image/user.png') }}" alt="user" class="rounded-circle"
+                                    <img src="{{$user->photo}}" alt="user" class="rounded-circle"
                                     width="40">
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </a>
@@ -67,7 +77,7 @@
                         </div>
 
                         <div class="col-8">
-                            <p>{{$user->birthday}}</p>
+                            <!-- <p>{{$user->birthday}}</p> -->
                         </div>
 
                         <div class="2">
@@ -183,7 +193,7 @@
 
       <div class="modal-header">
 
-        <h5 class="modal-title" id="edit_photo">Change Profile Photo</h5>
+        <h5 class="modal-title" id="edit_photo">Upload Profile Photo Here</h5>
 
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -193,28 +203,23 @@
 
   <div class="modal-body">
 
-    <form action="{{route('profiles.update',$user->id)}}" id="form" method="POST" enctype="multipart/form-data">
+    <form action="{{route('user.photo.edit', $user->id)}}" id="form" method="POST" enctype="multipart/form-data">
 
         @csrf
 
         @method('PUT')
 
         <div class="form-group">
-            <label for="photo" class="col-form-label">Upload a profile photo here</label>
-            <input type="file" class="form-control" id="photo" value="{{$user->photo}}">
+            <label for="photo" class="col-form-label">Photo</label>
+            <input type="file" name="photo" class="form-control" id="photo">
             <br>
             <button class="btn btn-secondary" onclick="showMain()">Cancel</button>
-            <button class="btn btn-secondary" onclick="showMain()">Done</button>
+            <button type="submit" class="btn btn-secondary" onclick="showMain()">Done</button>
         </div>
 
     </form>
 
 </div>
-
-<div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-</div>
-
 </div>
 </div>
 </div>
@@ -373,10 +378,16 @@
         @method('PUT')
 
         <div class="form-group">
+            <label for="old_password" class="col-form-label">Old Password</label>
+              <input type="password" name="old_password" class="form-control" id="old_password" placeholder="Enter Old Password">
+              <br>
             <label for="password" class="col-form-label">Password</label>
-            <input type="password" name="password" class="form-control" id="password" value="{{$user->password}}">
+            <input type="password" name="password" class="form-control" id="password" placeholder="Enter New Password">
             <br>
-            <input type="password" name="confirmpassword" class="form-control" id="password" >
+
+            <input type="password" name="confirmpassword" class="form-control" id="password" placeholder="Enter Confirm Password">
+            <br>
+
             <button class="btn btn-secondary" onclick="showMain()">Cancel</button>
             <button type="submit" class="btn btn-secondary" onclick="showMain()">Done</button>
         </div>

@@ -66,15 +66,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-         
-        // $fileName = 'null';
-        // if (Input::file('photo')->isValid()) {
-        //     $destinationPath = public_path('home_page/img');
-        //     $extension = Input::file('photo')->getClientOriginalExtension();
-        //     $fileName = '/home_page/img/'.uniqid().'.'.$extension;
-        //     Input::file('photo')->move($destinationPath,$fileName);
-        // }
-
         return User::create([
            
             'photo' => 'image/user.png',
@@ -86,4 +77,6 @@ class RegisterController extends Controller
         ])->assignRole('User');;
 
     }
+
+    
 }

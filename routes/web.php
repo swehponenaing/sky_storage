@@ -54,6 +54,8 @@ Route::group([
     Route::get('/files/download/{id}', 'FileController@download')->name('files.download');
 
 
+    Route::put('/userphotoedit/{id}', 'ProfileController@photo_edit')->name('user.photo.edit');
+
     Route::put('/usernameedit/{id}', 'ProfileController@name_edit')->name('user.name.edit');
 
     Route::put('/userbirthdayedit/{id}', 'ProfileController@birthday_edit')->name('user.birthday.edit');

@@ -9,8 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-    <title>Folders and Files</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('home_page/img/logo.png')}}">
+    <title>Sky Storage</title>
     <!-- Custom CSS -->
     <link href="{{asset('adminmart/assets/extra-libs/c3/c3.min.css') }}" rel="stylesheet">
     <link href="{{asset('adminmart/assets/libs/chartist/dist/chartist.min.css') }}" rel="stylesheet">
@@ -113,27 +113,19 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        <img src="{{asset('image/user.png') }}" alt="user" class="rounded-circle"
+                        <img src="{{Auth::user()->photo}}" alt="user" class="rounded-circle"
                         width="40">
                         <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span
                         class="text-dark">{{Auth::user()->name}}</span> <i data-feather="chevron-down"
                         class="svg-icon"></i></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
-                        <a class="dropdown-item" href="{{route('profiles.index')}}"><i data-feather="user"
-                            class="svg-icon mr-2 ml-1"></i>
-                        My Profile</a>
-                        <a class="dropdown-item" href="javascript:void(0)"><i data-feather="credit-card"
-                            class="svg-icon mr-2 ml-1"></i>
-                        My Balance</a>
-                        <a class="dropdown-item" href="javascript:void(0)"><i data-feather="mail"
-                            class="svg-icon mr-2 ml-1"></i>
-                        Inbox</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="javascript:void(0)"><i data-feather="settings"
+                        
+                       
+                        <a class="dropdown-item" href="{{route('profiles.index')}}"><i data-feather="settings"
                             class="svg-icon mr-2 ml-1"></i>
                         Account Setting</a>
-                        <div class="dropdown-divider"></div>
+                            <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}" aria-expanded="false" 
                         onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();" style="color: #af1c1c;">
@@ -143,9 +135,6 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
-                    <div class="dropdown-divider"></div>
-                    <div class="pl-4 p-3"><a href="javascript:void(0)" class="btn btn-sm btn-info">View
-                    Profile</a></div>
                 </div>
             </li>
             <!-- ============================================================== -->
