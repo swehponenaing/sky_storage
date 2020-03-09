@@ -2,6 +2,19 @@
 
 @section('content')
 
+@if($message= Session::get('success'))
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="alert alert-success">
+			<p>{{$message}}</p>
+		</div>
+	</div>
+</div>
+@endif
+
+
+
 <div class="container">
 	<h2 style="text-align: center;">Upgrade for more storage</h2>
 		<br>
@@ -35,7 +48,11 @@
 		<div class="col-lg-4 col-md-4 col-sm-12">	
 			<div class="card" style="width: 17rem;">				
 				<div class="card-body" style="text-align: center; color: black;">
+					@if($row->recommend == 1)
+					{
 					<h4 style="color: #f1948a; font-weight: bold;">Recommended</h4>
+					}
+					@endif
 					<h1 class="card-title">{{$row->storage_amount}} Files</h1>
 					<br>
 					<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#buy_package">MMK {{$row->price}}</a><br>
@@ -58,6 +75,8 @@
 @endforeach
 	</div>
 </div>
+
+
 
 <div class="modal fade" id="buy_package" tabindex="-1" role="dialog" aria-labelledby="buy_package" aria-hidden="true">
 
@@ -128,23 +147,4 @@
 @endsection
 
 
-<div class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 

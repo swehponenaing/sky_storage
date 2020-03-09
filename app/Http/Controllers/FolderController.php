@@ -103,7 +103,7 @@ class FolderController extends Controller
 
 
        // Return redirect //(5)
-        return redirect()->route('folders.index');
+        return redirect()->route('folders.index')->with('success', 'Folder has successfully updated!');
     }
 
     /**
@@ -117,18 +117,7 @@ class FolderController extends Controller
         $folder = Folder::find($id);
         $folder->delete();
 
-        return redirect()->route('folders.index');
-    }
-
-    public function download($id)
-    {
-        
-    }
-
-    public function showfile($id)
-    {
-        $files= File::where('folder_id', $id)->get();
-        return view('frontend.folders.showfile', compact('files'));
+        return redirect()->route('trash.index')->with('success', 'Your folder, including it\'s files has been permanently deleted!');
     }
 
     public function downloadZip($id)
@@ -154,9 +143,74 @@ class FolderController extends Controller
             readfile($zipname);
             unlink($zipname);
             return redirect()->route('folders.index');
-          }
-          
-        
+          }   
     }
+
+    public function showfile($id)
+    {
+        $created_by= Auth::user()->id;;
+        $files= File::where('folder_id', $id)->get();
+        $folder_id= $id;
+        return view('frontend.folders.showfile', compact('files', 'folder_id', 'created_by'));
+    }
+
+    public function uploadfile(Request $request)
+    {
+        $user = Auth::user();
+        $files_count = File::where('created_by_id', $user->id)->count();
+    
+        $request->validate([
+            'file' => 'required',
+            'file.*' => 'mimes: doc, pdf, txt, docx, pptx, zip, jpg, jpeg, png, svg, xml, html, csv,',
+            'folder_id' => 'required',
+            'created_by_id' =>'required'
+           ]);
+           
+        
+           if($request->hasfile('file'))
+           {
+                  $file=  $request->file('file');
+                
+                  $oldname=$file->getClientOriginalName();
+                  $upload_name=time().'.'.$file->getClientOriginalExtension();
+                  //$file_name=pathinfo($oldname, PATHINFO_FILENAME);
+                  $file->move(public_path('storage/files'), $upload_name);  
+                  $path='storage/files/'.$upload_name;
+                  $mime_type=$file->getClientMimeType();
+                  
+           }
+           
+        
+           if($files_count < $user->storage_limit)
+           {
+            $file= new File();
+            $file->path=$path;
+            $file->old_name= $oldname;
+            $file->file_name= $upload_name;
+            $file->mime_type= $mime_type;
+            $file->folder_id= request('folder_id');
+            $file->created_by_id=request('created_by_id');
+            $file->save();
+            return redirect()->route('showfolderfile', $request->folder_id)->with('success', 'Your file has successfully uploaded!');
+           }
+           else{
+            return redirect()->route('showfolderfile')->with('limit', 'Your storage limit is full');
+           }
+    }
+
+    public function temporarydelete($id){
+        $folder = Folder::find($id);
+        $files = File::where('folder_id', $folder->id)->get();
+        foreach($files as $file)
+        {
+            $file->status = 0;
+            $file->save();
+        }
+        $folder->status = 0;
+        
+        $folder->save();
+        return redirect()->route('folders.index')->with('success', 'Your folder, including it\'s files, has deleted successfully! You can restore it later inside Trash tab.');
+    }
+    
     
 }

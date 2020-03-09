@@ -13,9 +13,7 @@
 
 Route::get('/', function () {
     return view('home');
-})->name('dashboard');
-
-Route::get('/home', 'HomeController@index')->name('home');
+})->name('home');
 
 
 Auth::routes();
@@ -30,18 +28,35 @@ Route::group([
 
     //folder
     Route::resource('folders', 'FolderController');
+   
     //file
     Route::resource('files', 'FileController');
+   
     //package
     Route::resource('packages', 'PackageController')->middleware('role:Admin');
+<<<<<<< HEAD
+   
+=======
     //profile
     Route::resource('profiles', 'ProfileController');
 
+>>>>>>> 9e03c876dcef2b20be4b0c6a7794144f46d3484b
     //role
     Route::resource('roles','RoleController')->middleware('role:Admin');
+
+    Route::resource('users','UserController')->middleware('role:Admin');
    
     //***************** */
-    
+
+
+     //***************** */
+    //post routes ******** */
+    //***************** */
+
+    //File Upload Inside Folder
+    Route::post('/folder/fileupload', 'FolderController@uploadfile')->name('folder.file.upload');
+
+    //***************** */
     
     //***************** */
     //get routes ******** */
@@ -49,7 +64,11 @@ Route::group([
 
 
     //dashboard
-    Route::get('dashboard','FrontendController@dashboard')->name('dashboard');
+    Route::get('/dashboard','FrontendController@dashboard')->name('dashboard');
+
+
+    
+
     //download
     Route::get('/files/download/{id}', 'FileController@download')->name('files.download');
 
@@ -72,17 +91,37 @@ Route::group([
 
 
     Route::get('/folders/download/{id}', 'FolderController@downloadZip')->name('folders.downloadzip');
+<<<<<<< HEAD
+    
+=======
 
+>>>>>>> 9e03c876dcef2b20be4b0c6a7794144f46d3484b
     //payment (user_package)
     Route::get('/userpackage', 'PackageController@userpackage')->name('userpackage')->middleware('role:User');
     
     //buy package
     Route::get('/buypackage/{id}', 'PackageController@buypackage')->name('buypackage');
+    
     //show files in folder
     Route::get('/showfile/{id}', 'FolderController@showfile')->name('showfolderfile');
 
     
+    //file temporary delete
+    Route::get('/filetemporarydelete/{id}', 'FileController@temporarydelete')->name('filetemporarydelete');
+
+    //folder temporary delete
+    Route::get('/foldertemporarydelete/{id}', 'FolderController@temporarydelete')->name('foldertemporarydelete');
+    
+    //trash
+    Route::get('/trash', 'TrashController@index')->name('trash.index');
+
+    //restore
+    Route::get('/trash/filerestore/{id}', 'TrashController@filerestore')->name('filerestore');
+    Route::get('/trash/folderrestore/{id}', 'TrashController@folderrestore')->name('folderrestore');
+
+
     //***************** */
+
 
 });
 

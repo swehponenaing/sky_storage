@@ -68,7 +68,7 @@ class PackageController extends Controller
 
         // 5
         // return redirect => indicate file path
-        return redirect()->route('packages.index');
+        return redirect()->route('packages.index')->with('success', 'Package has successfully created!');
     }
 
     /**
@@ -121,7 +121,7 @@ class PackageController extends Controller
         $package->save();
 
         // return redirect => indicate file path
-        return redirect()->route('packages.index');
+        return redirect()->route('packages.index')->with('success', 'Package has successfully updated!');
     }
 
     /**
@@ -153,6 +153,9 @@ class PackageController extends Controller
         $user->save();
 
         $user->packages()->attach($package->id);
+        
+        $user->assignRole('Premium');
+        
 
         return redirect()->route('userpackage')->with('success', 'Congratulations, you got more storage!');
 

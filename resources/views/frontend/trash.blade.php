@@ -1,10 +1,12 @@
 @extends('template')
 
 @section('content')
-@if($message= Session::get('limit'))
+
+@if($message= Session::get('success'))
+
     <div class="row">
         <div class="col-md-12">
-            <div class="alert alert-danger" >
+            <div class="alert alert-success" >
             <p>{{$message }}</p>
             </div>
         </div>
@@ -15,46 +17,66 @@
         <div class="card">
             <div class="card-header py-3">
                 <div class="row">
-                    <div class="col-4">
-                        <h4 class="card-title m-0 font-weight-bold text-primary">Files</h4>
+                    <div class="col-12">
+                        <h4 class="card-title m-0 font-weight-bold text-primary">Trashes</h4>
                     </div>
-                    <div class="col-8">
-                        <form action="{{route('folder.file.upload')}}" method= "POST" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" name="created_by_id" value="{{$created_by}}">
-                            <input type="hidden" name="folder_id" value="{{$folder_id}}">
-                            <div class="row">
-                                <div class="col-8">
-                                    <input type="file" class="form-control-file ml-5" id="file" name="file">
-                                </div>
-                                <div class="col-4">
-                                    <button type="submit" class="btn waves-effect waves-light btn-primary btn-block float-right">
-                                        <span class="fas fa-upload">Upload
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    
                 </div>
             </div>
-
             <div class="card-body">
 
                 <div class="table-responsive">
-                    <table id="zero_config" class="table table-hover" style="width:100%">
+                    <table id="zero_config" class="table table-hover"
+                        style="width:100%">
                         <thead>
                             <tr>
                                 <th style="width: 30px;">No</th>
-                                <th>File Name</th>
+                                <th>Name</th>
                                 <th>Folder</th>
-                                <th>Action</th>
+                                <th>Restore</th>
                             </tr>
                         </thead>
                         <tbody>
                         @php $i=1 @endphp
+                        <!-- Folders -->
+                        @foreach($folders as $row)
+                        @if($row->status == 0)
+                        <tr>
+                            
+                            <td>{{$i++}}</td>
+                            <td>
+                            <div class="float-left mr-2">
+                                <i class="fa fa-folder" style="color: #d41cce; width: 20px; height: 20px;"></i>
+                            </div>
+                                {{$row->name}}
+
+                            </td>
+                            <td>
+                            <img src="{{asset('image/folder1.png')}}"  alt="" width="40rem;">
+                            </td>
+                            
+                            <td>
+                            <a href="{{route('folderrestore', $row->id)}}"  class="btn btn-success float-left mr-1">
+                                <i class=" fas fa-reply-all"></i>
+                            </a>
+                         
+                            <form method="POST" action="{{route('folders.destroy',$row->id)}}" onsubmit="return confirm('Are you sure you want to delete? This will permanentely delete your data!')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger mx-auto" >
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+                            </form>
+                            </td>
+                        </tr>
+                        @endif
+                        @endforeach
+
+                        <!-- Files -->
                         @foreach($files as $row)
+                        @if($row->status == 0)
+                           
                             <tr>
+                            
                                 <td>{{$i++}}</td>
                                 <td>
                                 <div class="float-left mr-2">
@@ -73,37 +95,32 @@
 
                                     @endif
                                 </div>
-                                @if($row->mime_type == "application/pdf" |
-                                $row->mime_type == "image/jpeg" | $row->mime_type == "image/png" | $row->mime_type == "image/svg+xml"
-                                )
-                                <a href="{{route('files.show', $row->id)}}" style="color: #7C8AA8;" >{{$row->old_name}}</a>
-
-                                @elseif($row->mime_type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" |
-                                $row->mime_type == "application/vnd.openxmlformats-officedocument.presentationml.presentation" |
-                                $row->mime_type == "application/zip" |
-                                $row->mime_type == "text/plain" | $row->mime_type == "text/csv" | $row->mime_type == "text/html"
-                                )
-                                <a href="{{route('files.download', $row->id)}}" style="color: #7C8AA8;" >{{$row->old_name}}</a>
-                                @endif
+                                {{$row->old_name}}
                                 </td>
                                 <td>{{$row->folder->name}}</td>
                                 <td>
-                                <a href="{{route('files.download', $row->id)}}"  class="btn btn-primary float-left mr-1">
-                                <i class="fas fa-download"></i>
+                                <a href="{{route('filerestore', $row->id)}}"  class="btn btn-success float-left mr-1">
+                                    <i class=" fas fa-reply-all"></i>
                                 </a>
-                                <a href="{{route('filetemporarydelete', $row->id)}}" class="btn btn-danger float-left">
-                                <i class="fas fa-trash-alt"></i>
-                                </a>
+                             
+                                <form method="POST" action="{{route('files.destroy',$row->id)}}" onsubmit="return confirm('Are you sure you want to delete? This will permanentely delete your data!')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger mx-auto" >
+                                    <i class="far fa-trash-alt"></i>
+                                </button>
+                                </form>
                                 </td>
                             </tr>
+                        @endif
                         @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th>No</th>
-                                <th>File Name</th>
+                                <th>Name</th>
                                 <th>Folder</th>
-                                <th>Action</th>
+                                <th>Restore</th>
                             </tr>
                         </tfoot>
                     </table>
@@ -112,5 +129,6 @@
         </div>
     </div>
 </div>
+
 
 @endsection
