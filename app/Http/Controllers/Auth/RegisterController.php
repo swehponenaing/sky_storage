@@ -8,6 +8,8 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
+
 
 class RegisterController extends Controller
 {
@@ -64,9 +66,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+         
+        // $fileName = 'null';
+        // if (Input::file('photo')->isValid()) {
+        //     $destinationPath = public_path('home_page/img');
+        //     $extension = Input::file('photo')->getClientOriginalExtension();
+        //     $fileName = '/home_page/img/'.uniqid().'.'.$extension;
+        //     Input::file('photo')->move($destinationPath,$fileName);
+        // }
+
         return User::create([
+           
+            'photo' => 'image/user.png',
             'name' => $data['name'],
             'email' => $data['email'],
+            'password_length' => strlen($data['password']),
             'password' => Hash::make($data['password']),
 
         ])->assignRole('User');;

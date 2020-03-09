@@ -34,7 +34,13 @@ Route::group([
    
     //package
     Route::resource('packages', 'PackageController')->middleware('role:Admin');
+<<<<<<< HEAD
    
+=======
+    //profile
+    Route::resource('profiles', 'ProfileController');
+
+>>>>>>> 9e03c876dcef2b20be4b0c6a7794144f46d3484b
     //role
     Route::resource('roles','RoleController')->middleware('role:Admin');
 
@@ -56,6 +62,7 @@ Route::group([
     //get routes ******** */
     //***************** */
 
+
     //dashboard
     Route::get('/dashboard','FrontendController@dashboard')->name('dashboard');
 
@@ -64,8 +71,29 @@ Route::group([
 
     //download
     Route::get('/files/download/{id}', 'FileController@download')->name('files.download');
+
+
+    Route::put('/usernameedit/{id}', 'ProfileController@name_edit')->name('user.name.edit');
+
+    Route::put('/userbirthdayedit/{id}', 'ProfileController@birthday_edit')->name('user.birthday.edit');
+
+    Route::put('/usergenderedit/{id}', 'ProfileController@gender_edit')->name('user.gender.edit');
+
+    Route::put('/userpasswordedit/{id}', 'ProfileController@password_edit')->name('user.password.edit');
+
+    Route::put('/useremailedit/{id}', 'ProfileController@email_edit')->name('user.email.edit');
+
+    Route::put('/userphoneedit/{id}', 'ProfileController@phone_edit')->name('user.phone.edit');
+
+
+
+
     Route::get('/folders/download/{id}', 'FolderController@downloadZip')->name('folders.downloadzip');
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 9e03c876dcef2b20be4b0c6a7794144f46d3484b
     //payment (user_package)
     Route::get('/userpackage', 'PackageController@userpackage')->name('userpackage')->middleware('role:User');
     
@@ -74,6 +102,7 @@ Route::group([
     
     //show files in folder
     Route::get('/showfile/{id}', 'FolderController@showfile')->name('showfolderfile');
+
     
     //file temporary delete
     Route::get('/filetemporarydelete/{id}', 'FileController@temporarydelete')->name('filetemporarydelete');

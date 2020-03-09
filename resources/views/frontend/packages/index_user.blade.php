@@ -48,7 +48,11 @@
 		<div class="col-lg-4 col-md-4 col-sm-12">	
 			<div class="card" style="width: 17rem;">				
 				<div class="card-body" style="text-align: center; color: black;">
+					@if($row->recommend == 1)
+					{
 					<h4 style="color: #f1948a; font-weight: bold;">Recommended</h4>
+					}
+					@endif
 					<h1 class="card-title">{{$row->storage_amount}} Files</h1>
 					<br>
 					<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#buy_package">MMK {{$row->price}}</a><br>
