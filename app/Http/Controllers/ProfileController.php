@@ -96,7 +96,7 @@ public function update(Request $request, $id)
 
 
    // Return redirect //(5)
-    return redirect()->route('profiles.index');
+    return redirect()->route('profiles.index')->with('success', 'Name has successfully updated!');
 }
 
 /**
@@ -134,7 +134,7 @@ public function photo_edit(Request $request, $id)
     $user->save();
 
    // Return redirect //(5)
-    return redirect()->route('profiles.index');
+    return redirect()->route('profiles.index')->with('success', 'Profile photo has successfully updated!');
 }
 
 
@@ -159,7 +159,7 @@ public function name_edit(Request $request, $id)
 
 
    // Return redirect //(5)
-    return redirect()->route('profiles.index');
+    return redirect()->route('profiles.index')->with('success', 'Name has successfully updated!');
 }
 
 
@@ -182,7 +182,7 @@ public function birthday_edit(Request $request, $id)
 
 
    // Return redirect //(5)
-    return redirect()->route('profiles.index');
+    return redirect()->route('profiles.index')->with('success', 'Birthday has successfully updated!');
 }
 
 public function gender_edit(Request $request, $id)
@@ -204,7 +204,7 @@ public function gender_edit(Request $request, $id)
 
 
    // Return redirect //(5)
-    return redirect()->route('profiles.index');
+    return redirect()->route('profiles.index')->with('success', 'Gender has successfully updated!');
 }
 
 
@@ -220,14 +220,11 @@ public function password_edit(Request $request, $id)
    // Store Data //(4)
     $user = User::find($id);
 
+    $user->password =Hash::make(request('password'));
+    $user->save();
 
-    if(Hash::check('old_password', $user->password)){
-        $user->password =Hash::make(request('password'));
-        $user->save();
-    }
-    else{
-        return redirect()->route('profiles.index')->with('error', 'Incorrect current password!');
-    }
+    return redirect()->route('profiles.index')->with('success', 'Password has successfully updated!');
+
 
     
 
@@ -255,7 +252,7 @@ public function email_edit(Request $request, $id)
 
 
    // Return redirect //(5)
-    return redirect()->route('profiles.index');
+    return redirect()->route('profiles.index')->with('success', 'Email has successfully updated!');
 }
 
 public function phone_edit(Request $request, $id)
@@ -277,7 +274,7 @@ public function phone_edit(Request $request, $id)
 
 
    // Return redirect //(5)
-    return redirect()->route('profiles.index');
+    return redirect()->route('profiles.index')->with('success', 'Phone has successfully updated!');
 }
 
 

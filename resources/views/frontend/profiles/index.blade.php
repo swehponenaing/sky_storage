@@ -20,7 +20,7 @@
         <div class="col-md-12">
             <div class="card border mb-3">
                 <div class="card-header bg-transparent border-success">
-                    <h3 style="color: black;">Profile</h3>
+                    <h2>Profile</h2>
                     <p>Some info may be visible to other people using Google services.</p>
                 </div>
 
@@ -41,7 +41,7 @@
                                     <a class="nav-link dropdown-toggle" href="#" data-toggle="modal" data-target="#edit_photo"
                                     aria-haspopup="true" aria-expanded="false">
                                     <img src="{{$user->photo}}" alt="user" class="rounded-circle"
-                                    width="40">
+                                    width="40" height="40">
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </a>
                             </a>
@@ -77,7 +77,7 @@
                         </div>
 
                         <div class="col-8">
-                            <!-- <p>{{$user->birthday}}</p> -->
+                            <p>{{$user->birthday}}</p>
                         </div>
 
                         <div class="2">
@@ -378,9 +378,9 @@
         @method('PUT')
 
         <div class="form-group">
-            <label for="old_password" class="col-form-label">Old Password</label>
+            <!-- <label for="old_password" class="col-form-label">Old Password</label>
               <input type="password" name="old_password" class="form-control" id="old_password" placeholder="Enter Old Password">
-              <br>
+              <br> -->
             <label for="password" class="col-form-label">Password</label>
             <input type="password" name="password" class="form-control" id="password" placeholder="Enter New Password">
             <br>

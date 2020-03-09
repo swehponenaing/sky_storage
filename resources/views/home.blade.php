@@ -152,7 +152,7 @@
                             	<i class="fa fa-cloud"></i>
                         	</div>
                         </center>
-                        <h3 class="box-title" style="text-align: center;">Premium</h3>
+                        <h3 class="box-title" style="text-align: center;">Gold</h3>
                         <p style="text-align: center;">Premium => 30 Files Storage</p>
                     </div>
                 </div>
@@ -164,8 +164,8 @@
                             	<i class="icofont icofont-business-man-alt-1"></i>
                         	</div>
                     	</center>
-                        <h3 class="box-title" style="text-align: center;">Premium Plus</h3>
-                        <p style="text-align: center;">Premium Plus => 50 Files Sotrage</p>
+                        <h3 class="box-title" style="text-align: center;">Platinum</h3>
+                        <p style="text-align: center;">Premium Plus => 80 Files Sotrage</p>
                     </div>
                 </div>
             
@@ -202,13 +202,13 @@
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="single-fun-fact mb30 wow fadeInUp" data-wow-delay="0.2s">
                         <h3 class="font60 xs-font26"><span class="counter">30</span>files</h3>
-                        <p class="font600">Platinum</p>
+                        <p class="font600">Gold</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="single-fun-fact mb30 wow fadeInUp" data-wow-delay="0.3s">
-                        <h3 class="font60 xs-font26"><span class="counter">50</span>files</h3>
-                        <p class="font600">Platinum Plus</p>
+                        <h3 class="font60 xs-font26"><span class="counter">80</span>files</h3>
+                        <p class="font600">Platinum</p>
                     </div>
                 </div>              
             </div>
@@ -254,7 +254,10 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                         <div class="footer-copyright text-center wow fadeIn">
-                            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved. Designed and Developed by <a
+                            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved. Designed and Developed by
+                            <a
+                    href="https://www.facebook.com/venishz"><span style="font-weight: bold;">Swe Hpone Naing &</span></a>
+                             <a
                     href="https://www.facebook.com/tildy.hsu"><span style="font-weight: bold;">Hsu Yati Khin</span></a></p>
                         </div>
                     </div>

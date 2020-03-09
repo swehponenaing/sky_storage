@@ -17,7 +17,7 @@ class CreateFoldersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->unsignedBigInteger('created_by_id');
-            $table->boolean('status');
+            $table->boolean('status')->default(1);
             $table->timestamps();
             $table->softDeletes();
             $table->index(['deleted_at']);

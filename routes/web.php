@@ -34,13 +34,11 @@ Route::group([
    
     //package
     Route::resource('packages', 'PackageController')->middleware('role:Admin');
-<<<<<<< HEAD
-   
-=======
+
     //profile
     Route::resource('profiles', 'ProfileController');
 
->>>>>>> 9e03c876dcef2b20be4b0c6a7794144f46d3484b
+
     //role
     Route::resource('roles','RoleController')->middleware('role:Admin');
 
@@ -91,11 +89,8 @@ Route::group([
 
 
     Route::get('/folders/download/{id}', 'FolderController@downloadZip')->name('folders.downloadzip');
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> 9e03c876dcef2b20be4b0c6a7794144f46d3484b
+
     //payment (user_package)
     Route::get('/userpackage', 'PackageController@userpackage')->name('userpackage')->middleware('role:User');
     

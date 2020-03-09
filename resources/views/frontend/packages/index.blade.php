@@ -28,12 +28,13 @@
             <div class="card" style="width: 13rem;"> 
 
                 <div class="card-header" style="background-color: #ededed">
-                    <img src="{{asset('image/package.png')}}" class="card-img-fluid" alt="Package" width="100%">
+                    <img src="{{asset('image/package.svg')}}" class="card-img-fluid" alt="Package" width="100%">
                 </div> 
 
                 <div class="card-body" style="background-color: #ffffff;">
 
                     <h5 class="card-title" style="text-align: center;">{{$row->name}}</h5>
+                    <p style="color: black; text-align: center;">Storage Amount: {{$row->storage_amount}}</p>
                     <div style="margin-left: 22%;">
                         <a href="{{route('packages.edit', $row->id)}}" type="submit" class="btn
                             btn-primary float-left mr-1" style="display: block;"> <i class="far

@@ -61,7 +61,7 @@
                     <!-- ============================================================== -->
                     <div class="navbar-brand">
                         <!-- Logo icon -->
-                        <a href="index.html">
+                        <a href="{{route('dashboard')}}">
                           <b class="logo-icon">
                             <img src="{{asset('home_page/img/logo.png') }}" alt="homepage" class="light-logo">
                         </b> 
@@ -115,7 +115,7 @@
                         <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <img src="{{Auth::user()->photo}}" alt="user" class="rounded-circle"
-                        width="40">
+                        width="40" height="40">
                         <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span
                         class="text-dark">{{Auth::user()->name}}</span> <i data-feather="chevron-down"
                         class="svg-icon"></i></span>
@@ -198,13 +198,15 @@
 
 
                     
+                    
+                    @if(Auth::user()->name=='Admin')
                     <li class="nav-small-cap"><span class="hide-menu">Applications</span></li>
                     <li class="sidebar-item">
-                    @if(Auth::user()->name=='Admin')
-                    
+
                     <a class="sidebar-link sidebar-link" href="{{ route('packages.index') }}" aria-expanded="false">
                         
                     @else
+                    <li class="sidebar-item">
                     <a class="sidebar-link sidebar-link" href="{{ route('userpackage') }}" aria-expanded="false">
                     @endif
                     
@@ -264,7 +266,9 @@
         <!-- ============================================================== -->
         <footer class="footer text-center text-muted">
             All Rights Reserved. Designed and Developed by <a
-            href="https://www.facebook.com/venishz">Swe Hpone Naing</a>.
+            href="https://www.facebook.com/venishz">Swe Hpone Naing</a>
+            &
+            <a href="https://www.facebook.com/tildy.hsu">Hsu Yati Khin.</a>
         </footer>
         <!-- ============================================================== -->
         <!-- End footer -->

@@ -17,7 +17,7 @@
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Total Users</h6>
                                 </div>
                                 <div class="ml-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><i class="fas fa-file" style="color: #468bfa;"></i></span>
+                                    <span class="opacity-7 text-muted"><i class="fas fa-user" style="color: #f75114;"></i></span>
                                 </div>
                             </div>
                         </div>
@@ -32,7 +32,7 @@
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Total Files</h6>
                             </div>
                                 <div class="ml-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><i class="fas fa-box-open" style="color: #f7bb14;"></i></span>
+                                    <span class="opacity-7 text-muted"><i class="fas fa-file" style="color: #468bfa;"></i></span>
                                 </div>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Total Folders</h6>
                                 </div>
                                 <div class="ml-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><i data-feather="file-plus" style="color: #14f791;"></i></span>
+                                    <span class="opacity-7 text-muted"><i  class="fas fa-folder" style="color: #bd3ade;"></i></span>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                                     <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Total Package</h6>
                                 </div>
                                 <div class="ml-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><i class="fas fa-user-circle font-20" style="color: #f75114;"></i></span>
+                                    <span class="opacity-7 text-muted"><i class="fas fa-box-open" style="color: #d4ab19;"></i></span>
                                 </div>
                             </div>
                         </div>

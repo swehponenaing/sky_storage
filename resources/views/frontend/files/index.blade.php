@@ -51,6 +51,7 @@
                         <tbody>
                         @php $i=1 @endphp
                         @foreach($files as $row)
+                        @if($row->status == 1)
                             <tr>
                                 <td>{{$i++}}</td>
                                 <td>
@@ -88,11 +89,12 @@
                                 <a href="{{route('files.download', $row->id)}}"  class="btn btn-primary float-left mr-1">
                                 <i class="fas fa-download"></i>
                                 </a>
-                                <a href="{{route('filetemporarydelete', $row->id)}}" class="btn btn-danger float-left">
+                                <a href="{{route('filetemporarydelete', $row->id)}}" class="btn btn-danger float-left" onclick="return confirm('Are you sure to delete?')">
                                 <i class="fas fa-trash-alt"></i>
                                 </a>
                                 </td>
                             </tr>
+                        @endif
                         @endforeach
                         </tbody>
                         <tfoot>

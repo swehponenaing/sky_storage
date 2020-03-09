@@ -44,17 +44,24 @@
 			</div>
 		</div>
 
+
+
 @foreach($packages as $row)
 		<div class="col-lg-4 col-md-4 col-sm-12">	
 			<div class="card" style="width: 17rem;">				
 				<div class="card-body" style="text-align: center; color: black;">
-					@if($row->recommend == 1)
-					{
-					<h4 style="color: #f1948a; font-weight: bold;">Recommended</h4>
-					}
+					<div style="height: 105px; ">
+						@if($row->recommend == 1)
+						<div style="height:20px; ">
+							<h4 style="color: #f1948a; font-weight: bold;">Recommended</h4>
+						</div>
+						@else
+						<div style="height: 20px"><a></a></div>
+					
+					
 					@endif
 					<h1 class="card-title">{{$row->storage_amount}} Files</h1>
-					<br>
+					</div>
 					<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#buy_package">MMK {{$row->price}}</a><br>
 					<hr style="background-color: white;">
 					<p class="card-text" style="text-align: left;">includes</p>
@@ -72,9 +79,9 @@
 				</div>
 			</div>
 		</div>
-@endforeach
-	</div>
-</div>
+
+	
+
 
 
 
@@ -131,6 +138,10 @@
     </div>
   </div>
 </div>
+@endforeach
+</div>
+</div>
+
 
 @endsection
 
