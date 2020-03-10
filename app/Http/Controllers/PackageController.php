@@ -146,7 +146,20 @@ class PackageController extends Controller
 
     public function buypackage($id)
     {
+
+
         $package = Package::find($id);
+        
+
+        return view('frontend.packages.buypackage', compact('package'));
+
+        
+    }
+
+    public function buypackagestore(Request $request)
+    {
+        $package_id = request('package_id');
+        $package = Package::find($package_id);
         $user = Auth::user();
 
         $user->storage_limit += $package->storage_amount;
@@ -159,7 +172,5 @@ class PackageController extends Controller
 
         return redirect()->route('userpackage')->with('success', 'Congratulations, you got more storage!');
 
-        
     }
-
 }

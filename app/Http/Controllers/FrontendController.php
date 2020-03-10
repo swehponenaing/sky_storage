@@ -9,6 +9,7 @@ use App\User;
 use App\Package;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\DB;
 
 class FrontendController extends Controller
 {
@@ -37,11 +38,22 @@ class FrontendController extends Controller
             return view('frontend.dashboard', compact('user','files_count', 'folders', 'percentage', 'user_type'));
         }
         else{
-            $users = User::all()->count();
-            $files = FIle::all()->count();
-            $folders = Folder::all()->count();
-            $packages = Package::all()->count();
-            return view('frontend.admindashboard', compact('users', 'files', 'folders', 'packages'));
+            $users_count = User::all()->count();
+            $files_count = FIle::all()->count();
+            $folders_count = Folder::all()->count();
+            $packages_count= Package::all()->count();
+
+            
+
+            $package_user= DB::table('package_user')->join('users', 'users.id', '=', 'package_user.user_id')
+                                                                                        ->join('packages', 'packages.id', '=', 'package_user.package_id')
+                                                                                        ->select('package_user.*','users.name as uname','packages.price as price','packages.name as pname','packages.storage_amount as storageamt')
+                                                                                        ->get();
+                
+
+
+
+            return view('frontend.admindashboard', compact('users_count', 'files_count', 'folders_count', 'packages_count','package_user'));
         }
         
         

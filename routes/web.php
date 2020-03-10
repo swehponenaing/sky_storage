@@ -96,6 +96,7 @@ Route::group([
     
     //buy package
     Route::get('/buypackage/{id}', 'PackageController@buypackage')->name('buypackage');
+    Route::post('/buypackagestore', 'PackageController@buypackagestore')->name('buypackagestore');
     
     //show files in folder
     Route::get('/showfile/{id}', 'FolderController@showfile')->name('showfolderfile');

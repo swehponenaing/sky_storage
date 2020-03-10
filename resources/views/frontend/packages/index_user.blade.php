@@ -62,7 +62,7 @@
 					@endif
 					<h1 class="card-title">{{$row->storage_amount}} Files</h1>
 					</div>
-					<a class="btn btn-primary" href="#" data-toggle="modal" data-target="#buy_package">MMK {{$row->price}}</a><br>
+					<a class="btn btn-primary" href="{{route('buypackage', $row->id)}}">MMK {{$row->price}}</a><br>
 					<hr style="background-color: white;">
 					<p class="card-text" style="text-align: left;">includes</p>
 					<div class="row">
@@ -79,13 +79,16 @@
 				</div>
 			</div>
 		</div>
+		@endforeach
+</div>
+</div>
 
 	
 
 
 
 
-<div class="modal fade" id="buy_package" tabindex="-1" role="dialog" aria-labelledby="buy_package" aria-hidden="true">
+<!-- <div class="modal fade" id="buy_package" tabindex="-1" role="dialog" aria-labelledby="buy_package" aria-hidden="true">
 
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -138,9 +141,7 @@
     </div>
   </div>
 </div>
-@endforeach
-</div>
-</div>
+
 
 
 @endsection
@@ -154,7 +155,7 @@
   var modal = $(this)
   modal.find('.modal-body input').val(recipient)
 })
-</script>
+</script> -->
 @endsection
 
 

@@ -12,8 +12,13 @@ class AdminTableSeeder extends Seeder
      */
     public function run()
     {
-        User::create(
-            ['name'=>'Admin', 'photo'=>'/storage/profile_photo/1583731751.png' ,'email'=>'admin@gmail.com', 'password'=>Hash::make('123456789'), 'password_length'=>'9', 'storage_limit'=>'0']
-        )->assignRole('Admin');
+        User::create([
+            'photo'=>'/storage/profile_photo/1583731751.png' ,
+            'name'=>'Admin', 
+            'email'=>'admin@gmail.com', 
+            'password'=>Hash::make('123456789'), 
+            'password_length'=>'9', 
+            'storage_limit'=>'0'
+        ])->assignRole('Admin');
     }
-
+}
